@@ -1221,17 +1221,7 @@ hexo-front-matter@^3.0.0:
   dependencies:
     js-yaml "^4.1.0"
 
-hexo-fs@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/hexo-fs/-/hexo-fs-0.1.6.tgz#f980ccc3bc79d0fb92eddbd887bc20a56500d03f"
-  integrity sha512-CAcMMDXJRMA1MUckq/O3jQaeSTlLtQSnlcpMSUee5bP6IBH8/30xe2BHD8pBl367fRbkj4jRcMdBSoDgorjHqg==
-  dependencies:
-    bluebird "^3.4.0"
-    chokidar "^1.5.2"
-    escape-string-regexp "^1.0.5"
-    graceful-fs "^4.1.4"
-
-hexo-fs@^0.2.0:
+hexo-fs@^0.2.0, hexo-fs@^0.2.2:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/hexo-fs/-/hexo-fs-0.2.3.tgz#c3a81b46e457dfafc56d87c78ef114104f4a3e41"
   integrity sha512-rLB1rMVUW3csAljvJgHfyjemL0BrmcUZfBf9hJe6S0pA53igFa3ON0PFwomvoLs1Wdmjs9Awnw9Tru4PjWFSlQ==
@@ -1389,14 +1379,15 @@ hexo-tag-aplayer@^3.0.4:
     hexo-util "^0.1.7"
     meting "^1.2.0"
 
-hexo-tag-dplayer@^0.1.6:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/hexo-tag-dplayer/-/hexo-tag-dplayer-0.1.9.tgz#59c59f1cf0b45ac93c1826dd624d4797f94228c0"
-  integrity sha512-Q/WR9IBUaFpUDI+KN43Ub1hxKouoQMUErEl4LpX/0sHy9v4ayO3sjup3lhCTv4utLsN2X1eeF6kqY4dv9oPtkw==
+hexo-tag-dplayer@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/hexo-tag-dplayer/-/hexo-tag-dplayer-0.3.3.tgz#744869fc40d5146216b8217c7c5e29cf2e53c8c6"
+  integrity sha512-Y2sweNkcYNr9cLt2J35V0R40P7rriPiW/99shfEdWy5xYxXNzCBKKuDC/YAr2XzzZk29WM5YPID9f2w3veaqdA==
   dependencies:
     dplayer "^1.6.0"
-    hexo-fs "^0.1.6"
-    hexo-util "^0.6.1"
+    hexo-fs "^0.2.2"
+    hexo-log "^0.2.0"
+    hexo-util "^0.6.2"
 
 hexo-theme-butterfly@^4.8.1:
   version "4.9.0"
@@ -1420,7 +1411,7 @@ hexo-util@^0.1.7:
     ent "^2.2.0"
     highlight.js "^8.6.0"
 
-hexo-util@^0.6.1:
+hexo-util@^0.6.2:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/hexo-util/-/hexo-util-0.6.3.tgz#16a2ade457bef955af0dfd22a3fe6f0a49a9137c"
   integrity sha512-zPxaqCWZz3/25SAB4FlrRtWktJ+Pr+vBiv/nyHpXKgXPt1m70liViKlRwWLqDmRjJ72x6/k4qCEeXHajvcGHUw==
