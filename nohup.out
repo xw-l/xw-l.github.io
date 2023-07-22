@@ -1,0 +1,2191 @@
+INFO  Validating config
+INFO  Start processing
+INFO  Hexo is running at http://localhost/ . Press Ctrl+C to stop.
+INFO  Validating config
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+INFO  Validating config
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/简单搭建私人仓库源.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:利用nginx或apache搭建个人仓库源
+ 2 | date:2023-03-25 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+ERROR Process failed: _posts/定时任务详解.md
+YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key (4:1)
+
+ 1 | title: Crontab 定时任务
+ 2 | date: 2023-04-01 10:36:00
+ 3 | tags
+ 4 | 
+-----^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1145:9)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+ERROR Process failed: _posts/定时任务详解.md
+YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key (5:1)
+
+ 2 | date:  2023-04-01 10:36:00
+ 3 | 
+ 4 | tags
+ 5 | 
+-----^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1145:9)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+ERROR Process failed: _posts/定时任务详解.md
+YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key (5:1)
+
+ 2 | date:  2023-04-01 10:36:00
+ 3 | 
+ 4 | tags
+ 5 | 
+-----^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1145:9)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+ERROR Process failed: _posts/定时任务详解.md
+YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key (4:1)
+
+ 1 | title:  Crontab 定时任务
+ 2 | date:  2023-04-01 10:36:00
+ 3 | tags
+ 4 | 
+-----^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1145:9)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+ERROR Process failed: _data/link.yml
+YAMLException: bad indentation of a mapping entry (2:15)
+
+ 1 | - class_name: 友情鏈接
+ 2 |     class_desc: 那些人，那些事
+-------------------^
+ 3 |     link_list:
+ 4 |          - name: Hexo
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1182:7)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockSequence (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1008:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1440:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+ERROR Process failed: _data/link.yml
+YAMLException: bad indentation of a mapping entry (2:15)
+
+ 1 | - class_name: 友情鏈接
+ 2 |     class_desc: 那些人，那些事
+-------------------^
+ 3 |     link_list:
+ 4 |          - name: Hexo
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1182:7)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockSequence (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1008:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1440:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+Unhandled rejection RangeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:33
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+  > 33|       !=partial('includes/widget/card_webinfo', {}, {cache: true})
+    34|       !=partial('includes/widget/card_bottom_self', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_webinfo.pug:14
+    12|         .webinfo-item
+    13|           .item-name= _p('aside.card_webinfo.runtime.name') + " :"
+  > 14|           .item-count#runtimeshow(data-publishDate=date_xml(theme.runtimeshow.publish_date))
+    15|             i.fa-solid.fa-spinner.fa-spin
+    16|       if theme.wordcount.enable && theme.wordcount.total_wordcount
+    17|         .webinfo-item
+
+Invalid time value
+    at Date.toISOString (<anonymous>)
+    at Object.toISOString (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/date.js:30:25)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:43:113)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:101:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1915:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection RangeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:33
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+  > 33|       !=partial('includes/widget/card_webinfo', {}, {cache: true})
+    34|       !=partial('includes/widget/card_bottom_self', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_webinfo.pug:14
+    12|         .webinfo-item
+    13|           .item-name= _p('aside.card_webinfo.runtime.name') + " :"
+  > 14|           .item-count#runtimeshow(data-publishDate=date_xml(theme.runtimeshow.publish_date))
+    15|             i.fa-solid.fa-spinner.fa-spin
+    16|       if theme.wordcount.enable && theme.wordcount.total_wordcount
+    17|         .webinfo-item
+
+Invalid time value
+    at Date.toISOString (<anonymous>)
+    at Object.toISOString (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/date.js:30:25)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:43:113)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:101:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1915:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection RangeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:33
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+  > 33|       !=partial('includes/widget/card_webinfo', {}, {cache: true})
+    34|       !=partial('includes/widget/card_bottom_self', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_webinfo.pug:14
+    12|         .webinfo-item
+    13|           .item-name= _p('aside.card_webinfo.runtime.name') + " :"
+  > 14|           .item-count#runtimeshow(data-publishDate=date_xml(theme.runtimeshow.publish_date))
+    15|             i.fa-solid.fa-spinner.fa-spin
+    16|       if theme.wordcount.enable && theme.wordcount.total_wordcount
+    17|         .webinfo-item
+
+Invalid time value
+    at Date.toISOString (<anonymous>)
+    at Object.toISOString (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/date.js:30:25)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:43:113)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:101:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1915:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+FATAL Port 4000 has been used. Try other port instead.
+FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
+Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (node:net:1774:16)
+    at listenInCluster (node:net:1822:12)
+    at Server.listen (node:net:1910:7)
+    at /opt/hexo/blog/node_modules/hexo-server/lib/server.js:68:12
+    at Promise._execute (/opt/hexo/blog/node_modules/bluebird/js/release/debuggability.js:384:9)
+    at Promise._resolveFromExecutor (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:518:18)
+    at new Promise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:103:10)
+    at checkPort (/opt/hexo/blog/node_modules/hexo-server/lib/server.js:65:10)
+    at module.exports (/opt/hexo/blog/node_modules/hexo-server/lib/server.js:17:10)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at Hexo.call (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:258:27)
+    at /usr/lib/node_modules/hexo-cli/lib/hexo.js:60:17
+    at tryCatcher (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues (/usr/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+Unhandled rejection RangeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:33
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+  > 33|       !=partial('includes/widget/card_webinfo', {}, {cache: true})
+    34|       !=partial('includes/widget/card_bottom_self', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_webinfo.pug:14
+    12|         .webinfo-item
+    13|           .item-name= _p('aside.card_webinfo.runtime.name') + " :"
+  > 14|           .item-count#runtimeshow(data-publishDate=date_xml(theme.runtimeshow.publish_date))
+    15|             i.fa-solid.fa-spinner.fa-spin
+    16|       if theme.wordcount.enable && theme.wordcount.total_wordcount
+    17|         .webinfo-item
+
+Invalid time value
+    at Date.toISOString (<anonymous>)
+    at Object.toISOString (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/date.js:30:25)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:43:113)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:101:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1915:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection RangeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:33
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+  > 33|       !=partial('includes/widget/card_webinfo', {}, {cache: true})
+    34|       !=partial('includes/widget/card_bottom_self', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_webinfo.pug:14
+    12|         .webinfo-item
+    13|           .item-name= _p('aside.card_webinfo.runtime.name') + " :"
+  > 14|           .item-count#runtimeshow(data-publishDate=date_xml(theme.runtimeshow.publish_date))
+    15|             i.fa-solid.fa-spinner.fa-spin
+    16|       if theme.wordcount.enable && theme.wordcount.total_wordcount
+    17|         .webinfo-item
+
+Invalid time value
+    at Date.toISOString (<anonymous>)
+    at Object.toISOString (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/date.js:30:25)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:43:113)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:101:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1915:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:29
+    27|       !=partial('includes/widget/card_recent_post', {}, {cache: true})
+    28|       !=partial('includes/widget/card_ad', {}, {cache: true})
+  > 29|       !=partial('includes/widget/card_newest_comment', {}, {cache: true})
+    30|       !=partial('includes/widget/card_categories', {}, {cache: true})
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_newest_comment.pug:1
+  > 1| if theme.newest_comments.enable && !['Livere','Facebook Comments','Giscus'].includes(theme.comments.use[0])
+    2|   .card-widget#card-newest-comments
+    3|     .item-headline
+    4|       i.fas.fa-comment-dots
+
+Cannot read properties of null (reading '0')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:8:105)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:26:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1907:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/head.pug:62
+    60| 
+    61| //- global config
+  > 62| !=partial('includes/head/config', {}, {cache: true})
+    63| 
+    64| include ./head/config_site.pug
+    65| include ./head/noscript.pug
+
+/opt/hexo/blog/themes/butterfly/layout/includes/head/config.pug:1
+  > 1| -
+    2|   let algolia = 'undefined';
+    3|   let env = process.env;
+    4|   if (theme.algolia_search.enable) {
+
+Cannot read properties of undefined (reading 'path')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:28:89)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:366:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:118:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/head.pug:62
+    60| 
+    61| //- global config
+  > 62| !=partial('includes/head/config', {}, {cache: true})
+    63| 
+    64| include ./head/config_site.pug
+    65| include ./head/noscript.pug
+
+/opt/hexo/blog/themes/butterfly/layout/includes/head/config.pug:1
+  > 1| -
+    2|   let algolia = 'undefined';
+    3|   let env = process.env;
+    4|   if (theme.algolia_search.enable) {
+
+Cannot read properties of undefined (reading 'path')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:28:89)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:366:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:118:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/head.pug:62
+    60| 
+    61| //- global config
+  > 62| !=partial('includes/head/config', {}, {cache: true})
+    63| 
+    64| include ./head/config_site.pug
+    65| include ./head/noscript.pug
+
+/opt/hexo/blog/themes/butterfly/layout/includes/head/config.pug:1
+  > 1| -
+    2|   let algolia = 'undefined';
+    3|   let env = process.env;
+    4|   if (theme.algolia_search.enable) {
+
+Cannot read properties of undefined (reading 'path')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:28:89)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:366:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:118:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/head.pug:62
+    60| 
+    61| //- global config
+  > 62| !=partial('includes/head/config', {}, {cache: true})
+    63| 
+    64| include ./head/config_site.pug
+    65| include ./head/noscript.pug
+
+/opt/hexo/blog/themes/butterfly/layout/includes/head/config.pug:1
+  > 1| -
+    2|   let algolia = 'undefined';
+    3|   let env = process.env;
+    4|   if (theme.algolia_search.enable) {
+
+Cannot read properties of undefined (reading 'path')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:28:89)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:366:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:118:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/head.pug:62
+    60| 
+    61| //- global config
+  > 62| !=partial('includes/head/config', {}, {cache: true})
+    63| 
+    64| include ./head/config_site.pug
+    65| include ./head/noscript.pug
+
+/opt/hexo/blog/themes/butterfly/layout/includes/head/config.pug:1
+  > 1| -
+    2|   let algolia = 'undefined';
+    3|   let env = process.env;
+    4|   if (theme.algolia_search.enable) {
+
+Cannot read properties of undefined (reading 'path')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:28:89)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:366:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:118:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:29
+    27|       !=partial('includes/widget/card_recent_post', {}, {cache: true})
+    28|       !=partial('includes/widget/card_ad', {}, {cache: true})
+  > 29|       !=partial('includes/widget/card_newest_comment', {}, {cache: true})
+    30|       !=partial('includes/widget/card_categories', {}, {cache: true})
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_newest_comment.pug:1
+  > 1| if theme.newest_comments.enable && !['Livere','Facebook Comments','Giscus'].includes(theme.comments.use[0])
+    2|   .card-widget#card-newest-comments
+    3|     .item-headline
+    4|       i.fas.fa-comment-dots
+
+Cannot read properties of null (reading '0')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:8:105)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:26:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1907:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:29
+    27|       !=partial('includes/widget/card_recent_post', {}, {cache: true})
+    28|       !=partial('includes/widget/card_ad', {}, {cache: true})
+  > 29|       !=partial('includes/widget/card_newest_comment', {}, {cache: true})
+    30|       !=partial('includes/widget/card_categories', {}, {cache: true})
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_newest_comment.pug:1
+  > 1| if theme.newest_comments.enable && !['Livere','Facebook Comments','Giscus'].includes(theme.comments.use[0])
+    2|   .card-widget#card-newest-comments
+    3|     .item-headline
+    4|       i.fas.fa-comment-dots
+
+Cannot read properties of null (reading '0')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:8:105)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:26:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1907:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:29
+    27|       !=partial('includes/widget/card_recent_post', {}, {cache: true})
+    28|       !=partial('includes/widget/card_ad', {}, {cache: true})
+  > 29|       !=partial('includes/widget/card_newest_comment', {}, {cache: true})
+    30|       !=partial('includes/widget/card_categories', {}, {cache: true})
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_newest_comment.pug:1
+  > 1| if theme.newest_comments.enable && !['Livere','Facebook Comments','Giscus'].includes(theme.comments.use[0])
+    2|   .card-widget#card-newest-comments
+    3|     .item-headline
+    4|       i.fas.fa-comment-dots
+
+Cannot read properties of null (reading '0')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:8:105)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:26:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1907:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:29
+    27|       !=partial('includes/widget/card_recent_post', {}, {cache: true})
+    28|       !=partial('includes/widget/card_ad', {}, {cache: true})
+  > 29|       !=partial('includes/widget/card_newest_comment', {}, {cache: true})
+    30|       !=partial('includes/widget/card_categories', {}, {cache: true})
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_newest_comment.pug:1
+  > 1| if theme.newest_comments.enable && !['Livere','Facebook Comments','Giscus'].includes(theme.comments.use[0])
+    2|   .card-widget#card-newest-comments
+    3|     .item-headline
+    4|       i.fas.fa-comment-dots
+
+Cannot read properties of null (reading '0')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:8:105)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:26:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1907:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/widget/index.pug:29
+    27|       !=partial('includes/widget/card_recent_post', {}, {cache: true})
+    28|       !=partial('includes/widget/card_ad', {}, {cache: true})
+  > 29|       !=partial('includes/widget/card_newest_comment', {}, {cache: true})
+    30|       !=partial('includes/widget/card_categories', {}, {cache: true})
+    31|       !=partial('includes/widget/card_tags', {}, {cache: true})
+    32|       !=partial('includes/widget/card_archives', {}, {cache: true})
+
+/opt/hexo/blog/themes/butterfly/layout/includes/widget/card_newest_comment.pug:1
+  > 1| if theme.newest_comments.enable && !['Livere','Facebook Comments','Giscus'].includes(theme.comments.use[0])
+    2|   .card-widget#card-newest-comments
+    3|     .item-headline
+    4|       i.fas.fa-comment-dots
+
+Cannot read properties of null (reading '0')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:8:105)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:26:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:1907:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+Unhandled rejection TypeError: /opt/hexo/blog/themes/butterfly/layout/includes/head.pug:62
+    60| 
+    61| //- global config
+  > 62| !=partial('includes/head/config', {}, {cache: true})
+    63| 
+    64| include ./head/config_site.pug
+    65| include ./head/noscript.pug
+
+/opt/hexo/blog/themes/butterfly/layout/includes/head/config.pug:1
+  > 1| -
+    2|   let algolia = 'undefined';
+    3|   let env = process.env;
+    4|   if (theme.algolia_search.enable) {
+
+Cannot read properties of undefined (reading 'path')
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:28:89)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:366:7)
+    at _View._compiledSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:132:24)
+    at _View.renderSync (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:59:25)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:52
+    at Cache.apply (/opt/hexo/blog/node_modules/hexo-util/lib/cache.js:27:46)
+    at Object.fragmentCache (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/fragment_cache.js:11:34)
+    at Object.partial (/opt/hexo/blog/node_modules/hexo/lib/plugins/helper/partial.js:31:17)
+    at eval (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:118:46)
+    at template (eval at wrap (/opt/hexo/blog/node_modules/pug-runtime/wrap.js:6:10), <anonymous>:5642:7)
+    at _View._compiled (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:136:50)
+    at _View.render (/opt/hexo/blog/node_modules/hexo/lib/theme/view.js:39:17)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:64:21
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at /opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34
+    at RouteStream._read (/opt/hexo/blog/node_modules/hexo/lib/hexo/router.js:47:5)
+    at Readable.read (node:internal/streams/readable:496:12)
+    at resume_ (node:internal/streams/readable:999:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: bad indentation of a mapping entry (744:12)
+
+ 741 | # Font settings for the site title and sit ...
+ 742 | # 左上角網站名字 主頁居中網站名字
+ 743 | blog_title_font: 捡破烂
+ 744 |   font_link:
+------------------^
+ 745 |   font-family: Titillium Web, 'PingFang SC ...
+ 746 | 
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1182:7)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
+TypeError: Cannot destructure property 'use' of 'themeConfig.comments' as it is undefined.
+    at Hexo.<anonymous> (/opt/hexo/blog/themes/butterfly/scripts/events/comment.js:7:9)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/extend/filter.js:67:52
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Object.gotValue (/opt/hexo/blog/node_modules/bluebird/js/release/reduce.js:166:18)
+    at Object.gotAccum (/opt/hexo/blog/node_modules/bluebird/js/release/reduce.js:155:25)
+    at Object.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at Promise._resolveCallback (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:466:57)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:559:17)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:609:26)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: bad indentation of a mapping entry (744:12)
+
+ 741 | # Font settings for the site title and sit ...
+ 742 | # 左上角網站名字 主頁居中網站名字
+ 743 | blog_title_font: 捡破烂
+ 744 |   font_link:
+------------------^
+ 745 |   font-family: Titillium Web, 'PingFang SC ...
+ 746 | 
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1182:7)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
+TypeError: Cannot read properties of undefined (reading 'internal_provider')
+    at Hexo.<anonymous> (/opt/hexo/blog/themes/butterfly/scripts/events/cdn.js:93:36)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/extend/filter.js:67:52
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Object.gotValue (/opt/hexo/blog/node_modules/bluebird/js/release/reduce.js:166:18)
+    at Object.gotAccum (/opt/hexo/blog/node_modules/bluebird/js/release/reduce.js:155:25)
+    at Object.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at Promise._resolveCallback (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:466:57)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:559:17)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:609:26)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: a line break is expected (26:8)
+
+ 23 |   时间轴: /archives/ || fas fa-archive
+ 24 |   标签: /tags/ || fas fa-tags
+ 25 |   分类: /categories/ || fas fa-folder-open
+ 26 |   清单: ||fa fa-list || hide:
+-------------^
+ 27 |     音乐: /music/ || fas fa-music
+ 28 |     照片: /Gallery/ || fas fa-images
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readLineBreak (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:391:5)
+    at readBlockScalar (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:879:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1445:35)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: a line break is expected (26:8)
+
+ 23 |   时间轴: /archives/ || fas fa-archive
+ 24 |   标签: /tags/ || fas fa-tags
+ 25 |   分类: /categories/ || fas fa-folder-open
+ 26 |   清单: ||fa fa-list || hide:
+-------------^
+ 27 |     音乐: /music/ || fas fa-music
+ 28 |     照片: /Gallery/ || fas fa-images
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readLineBreak (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:391:5)
+    at readBlockScalar (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:879:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1445:35)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: a line break is expected (26:8)
+
+ 23 |   时间轴: /archives/ || fas fa-archive
+ 24 |   标签: /tags/ || fas fa-tags
+ 25 |   分类: /categories/ || fas fa-folder-open
+ 26 |   清单: ||fa fa-list || hide:
+-------------^
+ 27 |     音乐: /music/ || fas fa-music
+ 28 |     照片: /Gallery/ || fas fa-images
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readLineBreak (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:391:5)
+    at readBlockScalar (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:879:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1445:35)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+WARN  Trying to "create" test/index.md, but the file already exists!
+WARN  Trying to "create" 简单实现mysql主从/index.md, but the file already exists!
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: a line break is expected (26:8)
+
+ 23 |   时间轴: /archives/ || fas fa-archive
+ 24 |   标签: /tags/ || fas fa-tags
+ 25 |   分类: /categories/ || fas fa-folder-open
+ 26 |   清单: ||fa fa-list || hide:
+-------------^
+ 27 |     音乐: /music/ || fas fa-music
+ 28 |     照片: /Gallery/ || fas fa-images
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readLineBreak (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:391:5)
+    at readBlockScalar (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:879:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1445:35)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: a line break is expected (26:8)
+
+ 23 |   时间轴: /archives/ || fas fa-archive
+ 24 |   标签: /tags/ || fas fa-tags
+ 25 |   分类: /categories/ || fas fa-folder-open
+ 26 |   清单: ||fa fa-list || hide:
+-------------^
+ 27 |     音乐: /music/ || fas fa-music
+ 28 |     照片: /Gallery/ || fas fa-images
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readLineBreak (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:391:5)
+    at readBlockScalar (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:879:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1445:35)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: a line break is expected (26:8)
+
+ 23 |   时间轴: /archives/ || fas fa-archive
+ 24 |   标签: /tags/ || fas fa-tags
+ 25 |   分类: /categories/ || fas fa-folder-open
+ 26 |   清单: ||fa fa-list || hide:
+-------------^
+ 27 |     音乐: /music/ || fas fa-music
+ 28 |     照片: /Gallery/ || fas fa-images
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readLineBreak (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:391:5)
+    at readBlockScalar (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:879:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1445:35)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+ERROR Theme config load failed.
+ERROR Process failed: _config.yml
+YAMLException: a line break is expected (26:8)
+
+ 23 |   时间轴: /archives/ || fas fa-archive
+ 24 |   标签: /tags/ || fas fa-tags
+ 25 |   分类: /categories/ || fas fa-folder-open
+ 26 |   清单: ||fa fa-list || hide:
+-------------^
+ 27 |     音乐: /music/ || fas fa-music
+ 28 |     照片: /Gallery/ || fas fa-images
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readLineBreak (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:391:5)
+    at readBlockScalar (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:879:5)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1445:35)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readBlockMapping (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1164:11)
+    at composeNode (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1441:12)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1625:3)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at Hexo.yamlHelper (/opt/hexo/blog/node_modules/hexo/lib/plugins/renderer/yaml.js:20:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/render.js:81:22
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
+TypeError: Cannot read properties of undefined (reading 'enable')
+    at Hexo.<anonymous> (/opt/hexo/blog/themes/butterfly/scripts/filters/post_lazyload.js:25:15)
+    at Hexo.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Hexo.<anonymous> (/opt/hexo/blog/node_modules/bluebird/js/release/method.js:15:34)
+    at /opt/hexo/blog/node_modules/hexo/lib/extend/filter.js:67:52
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Object.gotValue (/opt/hexo/blog/node_modules/bluebird/js/release/reduce.js:166:18)
+    at Object.gotAccum (/opt/hexo/blog/node_modules/bluebird/js/release/reduce.js:155:25)
+    at Object.tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+ERROR Process failed: _posts/mysql半复制主从.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:MySQL半同步复制简单实现
+ 2 | date:2023-05-05 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:609:26)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+ERROR Process failed: _posts/mysql半复制主从.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:MySQL半同步复制简单实现
+ 2 | date:2023-05-05 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:609:26)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+ERROR Process failed: _posts/mysql半复制主从.md
+YAMLException: end of the stream or a document separator is expected (3:5)
+
+ 1 | title:MySQL半同步复制简单实现
+ 2 | date:2023-05-05 20:36:00
+ 3 | tags:
+---------^
+    at generateError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:183:10)
+    at throwError (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:187:9)
+    at readDocument (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1645:5)
+    at loadDocuments (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1688:5)
+    at Object.load (/opt/hexo/blog/node_modules/js-yaml/lib/loader.js:1714:19)
+    at parseYAML (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:69:23)
+    at parse (/opt/hexo/blog/node_modules/hexo-front-matter/lib/front_matter.js:50:12)
+    at /opt/hexo/blog/node_modules/hexo/lib/plugins/processor/post.js:93:18
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:544:35)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at PromiseArray._iterate (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:115:31)
+    at PromiseArray.init [as _init] (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:79:10)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:601:21)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at Promise._fulfill (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:673:18)
+    at PromiseArray._resolve (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:127:19)
+    at PromiseArray._promiseFulfilled (/opt/hexo/blog/node_modules/bluebird/js/release/promise_array.js:145:14)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:609:26)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+    at Async.drainQueues [as _onImmediate] (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:15:14)
+    at process.processImmediate (node:internal/timers:478:21)
+INFO  Validating config
+ERROR Plugin load failed: hexo-tag-dplayer
+ReferenceError: primordials is not defined
+    at fs.js:42:5
+    at req_ (/opt/hexo/blog/node_modules/natives/index.js:143:24)
+    at Object.req [as require] (/opt/hexo/blog/node_modules/natives/index.js:55:10)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/fs.js:1:37)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/graceful-fs/graceful-fs.js:3:27)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at require (node:internal/modules/helpers:119:18)
+    at Object.<anonymous> (/opt/hexo/blog/node_modules/hexo-tag-dplayer/node_modules/hexo-fs/lib/fs.js:4:10)
+    at Module._compile (node:internal/modules/cjs/loader:1275:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1329:10)
+    at Module.load (node:internal/modules/cjs/loader:1133:32)
+    at Module._load (node:internal/modules/cjs/loader:972:12)
+    at Module.require (node:internal/modules/cjs/loader:1157:19)
+    at req (/opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:292:23)
+    at /opt/hexo/blog/node_modules/hexo-tag-dplayer/index.js:17:10
+    at /opt/hexo/blog/node_modules/hexo/lib/hexo/index.js:305:14
+    at tryCatcher (/opt/hexo/blog/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:547:31)
+    at Promise._settlePromise (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:604:18)
+    at Promise._settlePromise0 (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:649:10)
+    at Promise._settlePromises (/opt/hexo/blog/node_modules/bluebird/js/release/promise.js:729:18)
+    at _drainQueueStep (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:93:12)
+    at _drainQueue (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:86:9)
+    at Async._drainQueues (/opt/hexo/blog/node_modules/bluebird/js/release/async.js:102:5)
+INFO  
+  ===================================================================
+      #####  #    # ##### ##### ###### #####  ###### #      #   #
+      #    # #    #   #     #   #      #    # #      #       # #
+      #####  #    #   #     #   #####  #    # #####  #        #
+      #    # #    #   #     #   #      #####  #      #        #
+      #    # #    #   #     #   #      #   #  #      #        #
+      #####   ####    #     #   ###### #    # #      ######   #
+                            4.8.1
+  ===================================================================
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
