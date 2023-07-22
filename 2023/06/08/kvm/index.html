@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>简单使用kvm | 破站</title><meta name="author" content="lee"><meta name="copyright" content="lee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="KVM是一种开源的虚拟化技术，它是基于Linux内核的虚拟化解决方案，全称是Kernel-based Virtual Machine。KVM利用Linux内核的虚拟化扩展，将物理主机转变为可以运行多个虚拟机的虚拟化平台。那么这里我将使用centos和ubuntu来进行简单相关部署ubuntu 22.04部署步骤安装相关软件,虚拟机需开启虚拟化,我这里给的内存和核心都为8 1apt -y insta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单使用kvm">
+<meta property="og:url" content="https://blog.alybaba.top/2023/06/08/kvm/index.html">
+<meta property="og:site_name" content="破站">
+<meta property="og:description" content="KVM是一种开源的虚拟化技术，它是基于Linux内核的虚拟化解决方案，全称是Kernel-based Virtual Machine。KVM利用Linux内核的虚拟化扩展，将物理主机转变为可以运行多个虚拟机的虚拟化平台。那么这里我将使用centos和ubuntu来进行简单相关部署ubuntu 22.04部署步骤安装相关软件,虚拟机需开启虚拟化,我这里给的内存和核心都为8 1apt -y insta">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pan.alybaba.top/images/kvm.jpg">
+<meta property="article:published_time" content="2023-06-08T07:36:42.000Z">
+<meta property="article:modified_time" content="2023-07-11T05:49:21.000Z">
+<meta property="article:author" content="lee">
+<meta property="article:tag" content="Kvm">
+<meta property="article:tag" content="虚拟机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pan.alybaba.top/images/kvm.jpg"><link rel="shortcut icon" href="/img/adc51ac83a4784bfd25c7cae243b405.png"><link rel="canonical" href="https://blog.alybaba.top/2023/06/08/kvm/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'client=ca-pub-9239046296019160"',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '简单使用kvm',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-07-11 13:49:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pan.alybaba.top/images/kvm.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="破站"><span class="site-name">破站</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">简单使用kvm</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-08T07:36:42.000Z" title="发表于 2023-06-08 15:36:42">2023-06-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-11T05:49:21.000Z" title="更新于 2023-07-11 13:49:21">2023-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/">实用教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="简单使用kvm"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>KVM是一种开源的虚拟化技术，它是基于Linux内核的虚拟化解决方案，全称是Kernel-based Virtual Machine。KVM利用Linux内核的虚拟化扩展，将物理主机转变为可以运行多个虚拟机的虚拟化平台。那么这里我将使用centos和ubuntu来进行简单相关部署<br><code>ubuntu 22.04部署步骤</code><br>安装相关软件,虚拟机需开启虚拟化,我这里给的内存和核心都为8</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt -y install qemu-kvm virt-manager libvirt-daemon-system cockpit cockpit-machines  bridge-utils libosinfo-bin</span><br></pre></td></tr></table></figure>
+<p>开机自启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enble --now libvirtd.service</span><br><span class="line"><span class="comment">#开源的虚拟化管理守护进程，用于支持多种虚拟化技术，包括 KVM、QEMU、Xen、LXC 等。</span></span><br></pre></td></tr></table></figure>
+<p>web管理界面自启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now  cockpit</span><br><span class="line">systemctl status libvirtd.service</span><br><span class="line">brctl show</span><br><span class="line"><span class="comment">#这里是查看网桥信息，该命令可添加，删除网桥，默认kvm是桥接了一个virbr0的网桥</span></span><br></pre></td></tr></table></figure>
+<p>这里使用virt-manager</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> DISPLAY=10.0.0.1:0.0</span><br><span class="line"><span class="comment">#0.0为xmanager，这里我已经安装并打开了xmanager passive</span></span><br></pre></td></tr></table></figure>
+<p>打开xmanager</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virt-manager</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/xmanager-ok.jpg" alt="X-manager"><br>乱码请选择英文</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localctl set-locale LANG=en-US.UTF-8</span><br></pre></td></tr></table></figure>
+<p>创建目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /data/iso &amp;&amp; <span class="built_in">cd</span> /data/iso</span><br></pre></td></tr></table></figure>
+<p>安装windows</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">virt-install \</span><br><span class="line">--virt-type=kvm \</span><br><span class="line">--name win2016 \</span><br><span class="line">--ram 4096 \</span><br><span class="line">--vcpus 4 \</span><br><span class="line">--os-variant=win2k16 \</span><br><span class="line"><span class="comment">#注意，这里是根据libosinfo-bin | grep win查看到的</span></span><br><span class="line">--cdrom=/data/iso/cn_windows_server_2016_x64_dvd_9718765.iso \</span><br><span class="line">--network=bridge=virbr0,model=virtio \</span><br><span class="line">--graphics vnc,listen=0.0.0.0 --noautoconsole \</span><br><span class="line">--disk path=/var/lib/libvirt/images/win2016.qcow2,size=20,bus=virtio,format=qcow2</span><br></pre></td></tr></table></figure>
+<p>进入控制台</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">virt-manager</span><br><span class="line"><span class="comment">#这里报错请export DISPLAY=你和虚拟机网卡的网关:0.0</span></span><br></pre></td></tr></table></figure>
+<p>然后一直点下一步，直到这里，因为默认是不支持windows的virtio<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-1.jpg" alt="缺少驱动"></p>
+<p>下载驱动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.229-1/virtio-win-0.1.229.iso</span><br></pre></td></tr></table></figure>
+<p>然后重新来…记得删除或者暂停改个名也行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">virt-install \</span><br><span class="line">--virt-type=kvm \</span><br><span class="line">--name win2016 \</span><br><span class="line">--ram 4096 \</span><br><span class="line">--vcpus 4 \</span><br><span class="line">--os-variant=win2k16 \</span><br><span class="line">--cdrom=/data/iso/cn_windows_server_2016_x64_dvd_9718765.iso \</span><br><span class="line">--network=bridge=virbr0,model=virtio \</span><br><span class="line">--graphics vnc,listen=0.0.0.0 --noautoconsole \</span><br><span class="line">--disk path=/var/lib/libvirt/images/win2016.qcow2,size=20,bus=virtio,format=qcow2 \</span><br><span class="line">--disk path=/data/iso/virtio-win-0.1.229.iso,device=cdrom</span><br><span class="line"><span class="comment">#这里就是下载的驱动，关联一下</span></span><br></pre></td></tr></table></figure>
+<p>可以看到已经加载的原镜像和驱动<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-2.jpg" alt="成功加载"><br>选择加载驱动程序<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-3.jpg" alt="选择驱动"><br>选择2016，下一步<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-4.jpg" alt="加载驱动"><br>可以看到出来磁盘了，这里我就默认了<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-5.jpg" alt="配置磁盘"><br>等待安装…<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-6.jpg" alt="安装中..."><br>经过N遍重启成功进入<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-7.jpg" alt="安装中..."><br>安装网卡驱动<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-8.jpg" alt="安装网卡驱动"><br>安装PCI驱动<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-9.jpg" alt="安装PCI驱动"><br>其他驱动可依葫芦画瓢去挂载的驱动ISO里面去找，windows克隆可能会出现冲突，所以想要克隆可执行win自带初始化程序(谁会没事在linux克隆win？？？)<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-10.jpg" alt="初始化"><br>打快照，点击两个个电脑图标<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-11.jpg" alt="快照"><br>接着创建快照就行了<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/win-12.jpg" alt="快照"></p>
+<p><code>rocky 8.x 部署步骤</code><br>centos我就用图形web安装了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install qemu-kvm libvirt virt-manager virt-install  virt-viewer   cockpit  cockpit-machines</span><br><span class="line">systemctl start --now cockpit.socket</span><br><span class="line">systemctl start --now libvirtd</span><br></pre></td></tr></table></figure>
+<p>输入本机ip加port，我这里是10.0.0.200:9090<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/fist-page.jpg" alt="首页"><br>然后点击虚拟机，创建虚拟机，注意，我已经创建目录，上传了镜像，所有我选择本地安装，这里还能编辑配置，点击创建并运行或者安装即可<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/create-vm.jpg" alt="创建虚拟机"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/more-setting.jpg" alt="更多硬件自定义配置"><br>点一下界面，用鼠标上下键选择安装centos7<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/create-ok.jpg" alt="安装centos7"><br>做好配置好进行安装，这里安装的mini版，所以就300个,完成后请用 TAB 键选择reboot重启<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/install-centos7.jpg" alt="安装centos7-1"><br>到这里就安装完成了<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/install-ok.jpg" alt="成功安装centos7"></p>
+<p><code>命令行配置</code><br>创建一个20G的虚拟机磁盘文件，copy该文件，在图形化界面可导入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-img create -f qcow2 /var/lib/libvirt/images/centos7.qcow2 20G</span><br></pre></td></tr></table></figure>
+<p>初始化配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">virt-install --virt-type kvm \</span><br><span class="line">--name centos7 \</span><br><span class="line">--ram 1024 \</span><br><span class="line">--vcpus 2 \</span><br><span class="line">--cdrom=/data/isos/CentOS-7-x86_64-Minimal-2009.iso \</span><br><span class="line">--disk path=/var/lib/libvirt/images/centos7.qcow2 \</span><br><span class="line">--network network=default \</span><br><span class="line">--graphics vnc,listen=0.0.0.0 \</span><br><span class="line">--noautoconsole \</span><br><span class="line">--os-variant=centos7.0</span><br><span class="line"><span class="comment">#注意这里os-variant应该和支持的系统相同，这里必须先创建文件才能执行该命令</span></span><br><span class="line"><span class="comment">#--virt-type kvm意思是虚拟化类型为kvm</span></span><br><span class="line"><span class="comment">#--name centos7 虚拟机名称为centos7，可以自定义</span></span><br><span class="line"><span class="comment">#--ram 1024 内存分配1024mb，也可使用memory</span></span><br><span class="line"><span class="comment">#--vcpus 2 分配cpu核数为2核</span></span><br><span class="line"><span class="comment">#--cdrom= 指定光驱镜像路径为</span></span><br><span class="line"><span class="comment">#--disk=  指定虚拟机磁盘镜像为</span></span><br><span class="line"><span class="comment">#--network network=default 指定网络为系统默认</span></span><br><span class="line"><span class="comment">#--graphics vnc,listen=0.0.0.0 指定虚拟机使用 VNC 图形界面，并监听所有网络接口。</span></span><br><span class="line"><span class="comment">#--noautoconsole 不自动打开虚拟机的控制台</span></span><br><span class="line"><span class="comment">#--os-variant=centos7.0 指定虚拟机的操作系统为 CentOS 7</span></span><br></pre></td></tr></table></figure>
+<p>或者指定虚拟机磁盘文件一步到位</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">virt-install --virt-type kvm \</span><br><span class="line">--name centos7 \</span><br><span class="line">--ram 1024 \</span><br><span class="line">--vcpus 2 \</span><br><span class="line">--cdrom=/data/isos/CentOS-7-x86_64-Minimal-2009.iso \</span><br><span class="line">--disk path=/var/lib/libvirt/images/centos7.qcow2,size=10,format=qcow2,bus=virtio \</span><br><span class="line">--network network=default \</span><br><span class="line">--graphics vnc,listen=0.0.0.0 \</span><br><span class="line">--noautoconsole \</span><br><span class="line">--os-variant=centos7.0</span><br><span class="line"><span class="comment">#size=10,format=qcow2,bus=virtio,size=10为虚拟磁盘文件为10G，格式为qcow2，总线为virtio</span></span><br></pre></td></tr></table></figure>
+<p><code>克隆机器</code><br>方法1，复制已经安装的虚拟机磁盘文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> -a  /var/lib/libvirt/images/centos7-1.qcow2  /var/lib/libvirt/images/centos7-2.qcow2</span><br></pre></td></tr></table></figure>
+<p>在图形化界面选择导入<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/clone-1.jpg" alt="导入复制的虚拟机磁盘文件"><br>指定路径，选择操作系统<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/clone-2.jpg" alt="继续操作"><br>配置cpu和ram<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/clone-3.jpg" alt="配置硬件"><br>这里我改个名<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/clone-4.jpg" alt="修改虚拟机名称"><br>然后完成了<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/clone-5.jpg" alt="克隆完成"></p>
+<p>方法2,复制虚拟机磁盘文件，注意前面的复制我删了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> -a  /var/lib/libvirt/images/centos7-1.qcow2  /var/lib/libvirt/images/centos7-2.qcow2</span><br></pre></td></tr></table></figure>
+<p>命令行指定克隆机配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">virt-install --virt-type kvm \</span><br><span class="line">--name centos7-2 \</span><br><span class="line">--ram 1024 --vcpus 2 \</span><br><span class="line">--disk path=/var/lib/libvirt/images/centos7-2.qcow2,bus=virtio \</span><br><span class="line">--network network=default,model=virtio \</span><br><span class="line">--graphics vnc,listen=0.0.0.0 \</span><br><span class="line">--noautoconsole \</span><br><span class="line">--autostart \</span><br><span class="line">--boot hd</span><br><span class="line"><span class="comment">#--network network=default,model=virtio 使用virtio模型</span></span><br><span class="line"><span class="comment">#--autostart 虚拟机启动时自动启动</span></span><br><span class="line"><span class="comment">#--boot hd 启动顺序为从硬盘启动</span></span><br></pre></td></tr></table></figure>
+<p>然后在控制台也可以看见了，直接双击打开就ok<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/clone-6.jpg" alt="命令行克隆"></p>
+<p>方法3,基于现有虚拟机克隆</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">virt-clone -o centos7  -f /var/lib/libvirt/images/centos7-2.qcow2 -n centos7-2</span><br><span class="line"><span class="comment">#-o centos7 意思是根据现有虚拟机名称进行克隆</span></span><br><span class="line"><span class="comment">#-f /var/lib/libvirt/images/centos7-2.qcow2 新虚拟机磁盘文件的路径和名称</span></span><br><span class="line"><span class="comment">#-n centos7-2 新虚拟机的名称</span></span><br><span class="line"><span class="comment">#这里要注意的是，被克隆的虚拟机需要关机才行，不然会报错。然后克隆出来注意IP</span></span><br><span class="line"><span class="comment">#可写脚本批量创建</span></span><br></pre></td></tr></table></figure>
+<p>部分参考链接和术语解释</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md">https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md</a></li>
+<li><a target="_blank" rel="noopener" href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/">https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.linux-kvm.org/">https://www.linux-kvm.org</a></li>
+<li>QEMU-KVM 是一种开源的虚拟化解决方案，结合了QEMU和KVM两个组件，用于创建和管理虚拟机</li>
+<li>virt-manager 是一个图形化的虚拟机管理工具，用于管理KVM和QEMU虚拟化环境。</li>
+<li>libvirt 是一个开源的虚拟化管理工具，它提供了一个统一的接口和工具集，用于管理各种虚拟化平台（如KVM、QEMU、Xen等）上的虚拟机和虚拟化资源。</li>
+<li>Cockpit 是一个用于管理Linux服务器的图形化Web界面工具</li>
+<li>Cockpit Machines（也称为Virtual Machines）是Cockpit的一个插件，它提供了一个图形化的界面来管理和操作虚拟机。</li>
+<li>Bridge-utils 是一个用于 Linux 系统的网络管理工具，它提供了创建和管理网络桥接的功能。</li>
+<li>libosinfo-bin 是一个用于操作操作系统信息库（OS information database）的命令行工具。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top">lee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top/2023/06/08/kvm/">https://blog.alybaba.top/2023/06/08/kvm/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.alybaba.top" target="_blank">破站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Kvm/">Kvm</a><a class="post-meta__tags" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a></div><div class="post_share"><div class="social-share" data-image="https://pan.alybaba.top/images/kvm.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lee</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://xw-l.github.io/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://xw-l.github.io/" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxw520321@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://t.me/leeshizhendepi" target="_blank" title="Telegram"><i class="fab fa-telegram" style="color: #3399FF;"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/03/docker-redis/" title="docker构建redis"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/docker-facebook.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker构建redis"/></a><div class="content"><a class="title" href="/2023/07/03/docker-redis/" title="docker构建redis">docker构建redis</a><time datetime="2023-07-03T12:10:02.000Z" title="发表于 2023-07-03 20:10:02">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/30/redis-install/" title="Redis安装和多实例"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/redis.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis安装和多实例"/></a><div class="content"><a class="title" href="/2023/06/30/redis-install/" title="Redis安装和多实例">Redis安装和多实例</a><time datetime="2023-06-30T14:18:02.000Z" title="发表于 2023-06-30 22:18:02">2023-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/28/h3/" title="原来如此..."><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/v2-52ebc4a3cc0a850e18a52ab1aa1d83df_hd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="原来如此..."/></a><div class="content"><a class="title" href="/2023/06/28/h3/" title="原来如此...">原来如此...</a><time datetime="2023-06-28T08:48:42.000Z" title="发表于 2023-06-28 16:48:42">2023-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/keeplived/" title="编译安装keepalived"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/ubuntu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装keepalived"/></a><div class="content"><a class="title" href="/2023/06/26/keeplived/" title="编译安装keepalived">编译安装keepalived</a><time datetime="2023-06-26T13:20:02.000Z" title="发表于 2023-06-26 21:20:02">2023-06-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/haproxy/" title="编译安装haproxy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/Rocky.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装haproxy"/></a><div class="content"><a class="title" href="/2023/06/26/haproxy/" title="编译安装haproxy">编译安装haproxy</a><time datetime="2023-06-26T12:30:02.000Z" title="发表于 2023-06-26 20:30:02">2023-06-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pan.alybaba.top/images/kvm.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By lee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a>欢迎</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
