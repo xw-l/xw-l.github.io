@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Zabbix和Grafana | 破站</title><meta name="author" content="lee"><meta name="copyright" content="lee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前面介绍过简单安装zabbix了，想必zabbix自带的图形化可能无法满足需要，那么今天简单介绍下使用grafana来生成zabbix的图形化界面。  Grafana 是一个流行的开源数据可视化和监控平台，它提供了丰富的仪表盘和图表，用于可视化各种数据源的指标和日志。 Grafana 可以用于各种监控和数据可视化场景，如服务器监控、应用性能监控、网络监控、物联网数据可视化等。 Grafana 提供">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zabbix和Grafana">
+<meta property="og:url" content="https://blog.alybaba.top/2023/06/06/zabbix-grafana/index.html">
+<meta property="og:site_name" content="破站">
+<meta property="og:description" content="前面介绍过简单安装zabbix了，想必zabbix自带的图形化可能无法满足需要，那么今天简单介绍下使用grafana来生成zabbix的图形化界面。  Grafana 是一个流行的开源数据可视化和监控平台，它提供了丰富的仪表盘和图表，用于可视化各种数据源的指标和日志。 Grafana 可以用于各种监控和数据可视化场景，如服务器监控、应用性能监控、网络监控、物联网数据可视化等。 Grafana 提供">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pan.alybaba.top/images/zabbix_logo.png">
+<meta property="article:published_time" content="2023-06-06T11:00:10.000Z">
+<meta property="article:modified_time" content="2023-07-11T06:00:40.000Z">
+<meta property="article:author" content="lee">
+<meta property="article:tag" content="Zabbix">
+<meta property="article:tag" content="Grafana">
+<meta property="article:tag" content="图形化监控">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pan.alybaba.top/images/zabbix_logo.png"><link rel="shortcut icon" href="/img/adc51ac83a4784bfd25c7cae243b405.png"><link rel="canonical" href="https://blog.alybaba.top/2023/06/06/zabbix-grafana/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'client=ca-pub-9239046296019160"',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Zabbix和Grafana',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-07-11 14:00:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pan.alybaba.top/images/zabbix_logo.png')"><nav id="nav"><span id="blog-info"><a href="/" title="破站"><span class="site-name">破站</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Zabbix和Grafana</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-06T11:00:10.000Z" title="发表于 2023-06-06 19:00:10">2023-06-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-11T06:00:40.000Z" title="更新于 2023-07-11 14:00:40">2023-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/">实用教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Zabbix和Grafana"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>前面介绍过简单安装zabbix了，想必zabbix自带的图形化可能无法满足需要，那么今天简单介绍下使用grafana来生成zabbix的图形化界面。</p>
+<ol>
+<li>Grafana 是一个流行的开源数据可视化和监控平台，它提供了丰富的仪表盘和图表，用于可视化各种数据源的指标和日志。</li>
+<li>Grafana 可以用于各种监控和数据可视化场景，如服务器监控、应用性能监控、网络监控、物联网数据可视化等。</li>
+<li>Grafana 提供了一个强大而灵活的平台，使用户能够通过仪表盘和图表更好地理解和分析数据。</li>
+</ol>
+<p><code>部署步骤</code><br>ubuntu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install -y adduser libfontconfig1</span><br><span class="line"><span class="comment">#安装添加用户，组工具和字体配置和渲染的库</span></span><br></pre></td></tr></table></figure>
+<p>下载grafana安装装包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.grafana.com/enterprise/release/grafana-enterprise_9.5.2_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>本地安装grafana包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i grafana-enterprise_9.5.2_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>redhat</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y https://dl.grafana.com/enterprise/release/grafana-enterprise-9.5.2-1.x86_64.rpm</span><br><span class="line"><span class="comment">#官方源安装，Appstream版本过低，这里安装最新版的</span></span><br></pre></td></tr></table></figure>
+<p>或者清华源加速</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y https://mirrors.tuna.tsinghua.edu.cn/grafana/yum/rpm/Packages/grafana-enterprise-9.5.2-1.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<p>使用grafana命令工具安装zabbix插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grafana-cli plugins install alexanderzobnin-zabbix-app</span><br><span class="line"><span class="comment">#默认安装最新版</span></span><br></pre></td></tr></table></figure>
+<p>查看zabbix历史所有版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grafana-cli plugins list-versions  alexanderzobnin-zabbix-app</span><br></pre></td></tr></table></figure>
+<p>可根据list安装指定版本号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grafana-cli plugins install alexanderzobnin-zabbix-app  版本号</span><br></pre></td></tr></table></figure>
+<p>查看已安装的插件,我是安装的最新版</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grafana-cli plugins <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在web端Plugins启用zabbix(不想贴图了ing)<br>然后去Data sources添加zabbix，修改以下三项</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">URL  http://localhost:8080/api_jsonrpc.php</span><br><span class="line">user name  Admin</span><br><span class="line">password   zabbix</span><br><span class="line">#我用的nginx</span><br><span class="line">#这里要注意的是，如果是apache，端口号后应增加zabbix，这里我使用IP了，域名同理</span><br></pre></td></tr></table></figure>
+<p>自带的面板无法加载，去<a target="_blank" rel="noopener" href="https://grafana.com/grafana/dashboards">https://grafana.com/grafana/dashboards</a>下载一个<br>打开链接后搜索zabbix，记住编号，或者下载json文件<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/dashbords.jpg" alt="download zabbix dashboard"><br>回到web界面，点击Dashboards，最右边NEW，选择import<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/import-dashbords.jpg" alt="setting zabbix dashboard"><br>可以选择本地文件上传，也可输入模板的ID号进行在线load,实质上输入ID也是下载json文件，所以没有网络的情况下，可使用其他电脑下载<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/import-dashbords-2.jpg" alt="import zabbix dashboard"><br>这里我选择的load，稍等片刻加载后源选择zabbix即可。忘了说Grafana服务默认端口号为3000,如果想自定意可以按照以下操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql grafana-enterprise | grep etc</span><br><span class="line"><span class="comment">#查看配置文件</span></span><br><span class="line">vim /etc/grafana/grafana.ini</span><br><span class="line">;http_port = 3000</span><br><span class="line">http_port = you port</span><br></pre></td></tr></table></figure>
+<p>最终得到以下界面，然后有些参数显示不正确，可以自定义进行编辑，这里不在过多叙述。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/last-image.jpg" alt="最终效果图"><br>参考链接</p>
+<ul>
+<li>官方下载链接<a target="_blank" rel="noopener" href="https://grafana.com/grafana/download">https://grafana.com/grafana/download</a></li>
+<li>官方插件下载链接<a target="_blank" rel="noopener" href="https://grafana.com/grafana/plugins/">https://grafana.com/grafana/plugins/</a></li>
+<li>官方面板下载链接<a target="_blank" rel="noopener" href="https://grafana.com/grafana/dashboards">https://grafana.com/grafana/dashboards</a></li>
+<li>清华源加速<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/grafana/">https://mirrors.tuna.tsinghua.edu.cn/grafana/</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top">lee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top/2023/06/06/zabbix-grafana/">https://blog.alybaba.top/2023/06/06/zabbix-grafana/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.alybaba.top" target="_blank">破站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Zabbix/">Zabbix</a><a class="post-meta__tags" href="/tags/Grafana/">Grafana</a><a class="post-meta__tags" href="/tags/%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%9B%91%E6%8E%A7/">图形化监控</a></div><div class="post_share"><div class="social-share" data-image="https://pan.alybaba.top/images/zabbix_logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/01/zabbix/" title="开源监控Zabbix"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/zabbix_logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-01</div><div class="title">开源监控Zabbix</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lee</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://xw-l.github.io/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://xw-l.github.io/" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxw520321@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://t.me/leeshizhendepi" target="_blank" title="Telegram"><i class="fab fa-telegram" style="color: #3399FF;"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/03/docker-redis/" title="docker构建redis"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/docker-facebook.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker构建redis"/></a><div class="content"><a class="title" href="/2023/07/03/docker-redis/" title="docker构建redis">docker构建redis</a><time datetime="2023-07-03T12:10:02.000Z" title="发表于 2023-07-03 20:10:02">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/30/redis-install/" title="Redis安装和多实例"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/redis.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis安装和多实例"/></a><div class="content"><a class="title" href="/2023/06/30/redis-install/" title="Redis安装和多实例">Redis安装和多实例</a><time datetime="2023-06-30T14:18:02.000Z" title="发表于 2023-06-30 22:18:02">2023-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/28/h3/" title="原来如此..."><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/v2-52ebc4a3cc0a850e18a52ab1aa1d83df_hd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="原来如此..."/></a><div class="content"><a class="title" href="/2023/06/28/h3/" title="原来如此...">原来如此...</a><time datetime="2023-06-28T08:48:42.000Z" title="发表于 2023-06-28 16:48:42">2023-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/keeplived/" title="编译安装keepalived"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/ubuntu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装keepalived"/></a><div class="content"><a class="title" href="/2023/06/26/keeplived/" title="编译安装keepalived">编译安装keepalived</a><time datetime="2023-06-26T13:20:02.000Z" title="发表于 2023-06-26 21:20:02">2023-06-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/haproxy/" title="编译安装haproxy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/Rocky.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装haproxy"/></a><div class="content"><a class="title" href="/2023/06/26/haproxy/" title="编译安装haproxy">编译安装haproxy</a><time datetime="2023-06-26T12:30:02.000Z" title="发表于 2023-06-26 20:30:02">2023-06-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pan.alybaba.top/images/zabbix_logo.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By lee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a>欢迎</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

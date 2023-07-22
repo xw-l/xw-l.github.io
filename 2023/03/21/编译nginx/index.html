@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>nginx 目录优化保姆级教程 | 破站</title><meta name="author" content="lee"><meta name="copyright" content="lee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录一次nginx编译    众所周知，做一个最简单的网盘就是使用web服务了，但是不管是nginx和apache或者apache2的默认网页目录都太丑了，所以怎么能自定义修改默认的目录风格呢？以nginx为例，官方的autoindex模块只是简单的提供了以下几个选项 12345678910命令			默认值	可选值		作用域			作用autoindex		off	on&#x2F;off		http&#x2F;serv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx 目录优化保姆级教程">
+<meta property="og:url" content="https://blog.alybaba.top/2023/03/21/%E7%BC%96%E8%AF%91nginx/index.html">
+<meta property="og:site_name" content="破站">
+<meta property="og:description" content="记录一次nginx编译    众所周知，做一个最简单的网盘就是使用web服务了，但是不管是nginx和apache或者apache2的默认网页目录都太丑了，所以怎么能自定义修改默认的目录风格呢？以nginx为例，官方的autoindex模块只是简单的提供了以下几个选项 12345678910命令			默认值	可选值		作用域			作用autoindex		off	on&#x2F;off		http&#x2F;serv">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pan.alybaba.top/images/nginx-logo.png">
+<meta property="article:published_time" content="2023-03-21T06:31:23.000Z">
+<meta property="article:modified_time" content="2023-07-11T05:52:05.000Z">
+<meta property="article:author" content="lee">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="编译">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pan.alybaba.top/images/nginx-logo.png"><link rel="shortcut icon" href="/img/adc51ac83a4784bfd25c7cae243b405.png"><link rel="canonical" href="https://blog.alybaba.top/2023/03/21/%E7%BC%96%E8%AF%91nginx/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'client=ca-pub-9239046296019160"',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'nginx 目录优化保姆级教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-07-11 13:52:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pan.alybaba.top/images/nginx-logo.png')"><nav id="nav"><span id="blog-info"><a href="/" title="破站"><span class="site-name">破站</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">nginx 目录优化保姆级教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-21T06:31:23.000Z" title="发表于 2023-03-21 14:31:23">2023-03-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-11T05:52:05.000Z" title="更新于 2023-07-11 13:52:05">2023-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/">实用教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="nginx 目录优化保姆级教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>记录一次nginx编译<br>    众所周知，做一个最简单的网盘就是使用web服务了，但是不管是nginx和apache或者apache2的默认网页目录都太丑了，所以怎么能自定义修改默认的目录风格呢？<br>以nginx为例，官方的autoindex模块只是简单的提供了以下几个选项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">命令			默认值	可选值		作用域			作用</span><br><span class="line"></span><br><span class="line">autoindex		off	on/off		http/server/location	开启目录浏览功能</span><br><span class="line"></span><br><span class="line">autoindex_format	html	html/xml	same			html是以网页功能展示目录内容</span><br><span class="line">				json/jsonp</span><br><span class="line">autoindex_exact_size	on	on/off		same			开启为以字节，关闭为KB,MB,GB显示文件</span><br><span class="line">									autoindex_format为html时有效</span><br><span class="line">autoindex_localtime	off	on/off		same			开启以服务器的文件时间作为显示的时间</span><br><span class="line">									autoindex_format为html时有效</span><br></pre></td></tr></table></figure>
+<p>首先安装nginx,	 注意！这里演示的是安装后编译再增加,也可以编译时添加模块再安装,这里就不在做过多的展示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum or apt update &amp;&amp; yum or apt upgrade</span><br><span class="line">yum or apt install nginx -y</span><br><span class="line">systemctl start nginx或者/sbin/nginx -s start</span><br></pre></td></tr></table></figure>
+<p>根据根据官方给的autoindex模版，一个简单的web网盘配置如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	http</span><br><span class="line">	&#123; </span><br><span class="line"><span class="comment">#注意一条配置接一个分号，其次一般来说一行一个配置</span></span><br><span class="line">		root	/you/path/www/;	//root为nginx根目录，这里是指定nginx目录所在，一般来说自动配置了，这里是自定义</span><br><span class="line">		autoindex		on;	//开启目录浏览功能</span><br><span class="line">		autoindex_format	html;	//以html风格将目录展示在浏览器中，一般都是html</span><br><span class="line">		autoindex_exact_size	off;	//假如开启将会以字节显示文件大小，最好是关闭</span><br><span class="line">		autoindex_localtime	on;	//以服务器的时间作为显示的时间</span><br><span class="line">		charset utf-8,gbk;		//开启中文，假如有中文没有该选项将乱码显示</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>接着我们vi &#x2F;etc&#x2F;nginx&#x2F;nginx.conf把上面目录配置复制进去<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/11.jpg" alt="nginx 配置"><br>然后输入nginx -t或&#x2F;sbin&#x2F;nginx -t测试，输出success则继续输入systemctl restart nginx或&#x2F;sbin&#x2F;nginx  -s reload<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/2.png" alt="nginx 测试"><br>接着输入hostname -I，查看本机地址，注意可能会有多个地址，自己分辨<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/3.png" alt="查看本地ip"><br>注意:上面只是获取局域网地址，如果你是部署云请使用以下命令或脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -Ls ip.tool.lu</span><br></pre></td></tr></table></figure>
+<p>然后打开浏览器输入你的ip地址,但是忘了一件事，开启端口，我使用的是rocky：<br>同时这里要注意，如果是云，图省事就直接在控制台把nginx配置所对应的端口打开，我这里以常见80为例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd  --zone=public --add-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
+<p>规则生效需要重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>ufw和iptables</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ufw allow 80</span><br><span class="line">iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 80 -j ACCEPT</span><br><span class="line">或者iptables -F</span><br></pre></td></tr></table></figure>
+<p>接着刷新一下，可以看见了<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/4.png" alt="nginx 默认目录"><br>可以看到，很鸡儿丑。接下来我们就编译一个主题给他<br>    首先继续输入nginx -V或者&#x2F;sbin&#x2F;nginx -V,我们可以看到版本号和编译的模块<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/5.png" alt="nginx 版本和已编译模块"><br>    接着打开nginx.org，选择相应的版本使用wget下载该链接<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/6.png" alt="nginx 源码下载"></p>
+<p>解压到当前目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xf  nginx-1.14.2.tar.gz</span><br></pre></td></tr></table></figure>
+<p>进入该目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> nginx-1.14.2	</span><br></pre></td></tr></table></figure>
+<p>把nginx主题模块拖进来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/aperezdc/ngx-fancyindex/releases/download/v0.5.2/ngx-fancyindex-0.5.2.tar.xz</span><br></pre></td></tr></table></figure>
+<p>解压到当前目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xf ngx-fancyindex-0.5.2.tar.xz</span><br></pre></td></tr></table></figure>
+<p>然后前面的nginx -V的已编译信息直接复制过去，再跟上添加的模块路径执行脚本即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure  你已经安装编译的模块,这里太长，我就不复制了后面跟上要添加的模块就ok  --add-module=./ngx-fancyindex-0.5.2</span><br></pre></td></tr></table></figure>
+<p>接着编译，千万不要install，不然就nginx就费了因为你是安装后编译这个要注意</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make </span><br></pre></td></tr></table></figure>
+<p>注意:如果make这里很大几率报错，原因是缺少相关的依赖，所以请点击<a target="_blank" rel="noopener" href="https://www.baidu.com/">这里</a>查询需要的依赖,再安装对应的编译依赖包</p>
+<p>完事后把编译好的二进制程序nginx替换掉现有的nginx，请先暂停nginx service<br>编译成功会在objs目录下生成一个新的nginx二进制可执行程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/sbin/nginx -s stop 或者 systemctl stop nginx</span><br><span class="line"><span class="built_in">cp</span> -a objs/nginx /sbin/nginx</span><br><span class="line">/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>现在打开网址可以看到一个雏形，还是丑。我们继续，先进入nginx目录里</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /you/path/www</span><br></pre></td></tr></table></figure>
+<p>接着下载主题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/lanffy/Nginx-Fancyindex-Theme</span><br></pre></td></tr></table></figure>
+<p>再让fancyindex配置文件生效,打开nginx配置文件增加一行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include /you/path/fancyindex.conf;</span><br></pre></td></tr></table></figure>
+<p>测试nginx重启生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/nginx -t &amp;&amp; /sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>最终效果，也可以访问<a target="_blank" rel="noopener" href="http://pan.alybaba.top/">这里</a>查看我做的效果</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/7.png" alt="优化后的nginx目录"></p>
+<p>总结:其实还可以编译其他相关的nginx模块，这里就不再过多叙述，有兴趣的可前往github搜索…而且nginx还有很多有意思的配置，比如负载均衡，反向代理，正向代理等等…以后慢慢分享相关的玩法配置，在这里为什么我不使用apache呢？想必大家都知道log4j2零day漏洞了，这里就不再过多说明。但是编译过程最难的还是缺少相关依赖，对于一般人来说还是比较困难。总而言之，言而总之nginx是一个很高效且优质的代理web站点，学好不愁吃穿，当然在使用nginx时也要遵纪守法，不然就真的”不愁吃穿”了</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top">lee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top/2023/03/21/%E7%BC%96%E8%AF%91nginx/">https://blog.alybaba.top/2023/03/21/%E7%BC%96%E8%AF%91nginx/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.alybaba.top" target="_blank">破站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Nginx/">Nginx</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91/">编译</a></div><div class="post_share"><div class="social-share" data-image="https://pan.alybaba.top/images/nginx-logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/25/%E7%AE%80%E5%8D%95%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E4%BB%93%E5%BA%93%E6%BA%90/" title="利用nginx或apache简单搭建个人仓库源"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/Centos.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-25</div><div class="title">利用nginx或apache简单搭建个人仓库源</div></div></a></div><div><a href="/2023/05/30/LVS%E9%AB%98%E5%8F%AF%E7%94%A8%E7%9A%84%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%8E%A8%E8%BF%9B/" title="LVS-NAT四层+nginx七层"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/linux.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-30</div><div class="title">LVS-NAT四层+nginx七层</div></div></a></div><div><a href="/2023/06/28/h3/" title="原来如此..."><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/v2-52ebc4a3cc0a850e18a52ab1aa1d83df_hd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-28</div><div class="title">原来如此...</div></div></a></div><div><a href="/2023/06/26/keeplived/" title="编译安装keepalived"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/ubuntu.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-26</div><div class="title">编译安装keepalived</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lee</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://xw-l.github.io/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://xw-l.github.io/" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxw520321@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://t.me/leeshizhendepi" target="_blank" title="Telegram"><i class="fab fa-telegram" style="color: #3399FF;"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/03/docker-redis/" title="docker构建redis"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/docker-facebook.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker构建redis"/></a><div class="content"><a class="title" href="/2023/07/03/docker-redis/" title="docker构建redis">docker构建redis</a><time datetime="2023-07-03T12:10:02.000Z" title="发表于 2023-07-03 20:10:02">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/30/redis-install/" title="Redis安装和多实例"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/redis.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis安装和多实例"/></a><div class="content"><a class="title" href="/2023/06/30/redis-install/" title="Redis安装和多实例">Redis安装和多实例</a><time datetime="2023-06-30T14:18:02.000Z" title="发表于 2023-06-30 22:18:02">2023-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/28/h3/" title="原来如此..."><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/v2-52ebc4a3cc0a850e18a52ab1aa1d83df_hd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="原来如此..."/></a><div class="content"><a class="title" href="/2023/06/28/h3/" title="原来如此...">原来如此...</a><time datetime="2023-06-28T08:48:42.000Z" title="发表于 2023-06-28 16:48:42">2023-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/keeplived/" title="编译安装keepalived"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/ubuntu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装keepalived"/></a><div class="content"><a class="title" href="/2023/06/26/keeplived/" title="编译安装keepalived">编译安装keepalived</a><time datetime="2023-06-26T13:20:02.000Z" title="发表于 2023-06-26 21:20:02">2023-06-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/haproxy/" title="编译安装haproxy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/Rocky.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装haproxy"/></a><div class="content"><a class="title" href="/2023/06/26/haproxy/" title="编译安装haproxy">编译安装haproxy</a><time datetime="2023-06-26T12:30:02.000Z" title="发表于 2023-06-26 20:30:02">2023-06-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pan.alybaba.top/images/nginx-logo.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By lee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a>欢迎</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

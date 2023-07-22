@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>如何让nginx支持QUIC和HTTP3 | 破站</title><meta name="author" content="lee"><meta name="copyright" content="lee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什么是 HTTP&#x2F;3 和 QUIC ？ HTTP&#x2F;3 是一种基于 QUIC（Quick UDP Internet Connections）协议的 HTTP 协议版本，它是 HTTP&#x2F;2 的后继者，旨在改进 Web 性能和安全性。 HTTP&#x2F;3 与之前的 HTTP 协议有很大的不同，最明显的区别是它使用 QUIC 协议而不是 TCP 协议来传输数据。 QUIC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何让nginx支持QUIC和HTTP3">
+<meta property="og:url" content="https://blog.alybaba.top/2023/05/21/nginx%E7%BC%96%E8%AF%912/index.html">
+<meta property="og:site_name" content="破站">
+<meta property="og:description" content="什么是 HTTP&#x2F;3 和 QUIC ？ HTTP&#x2F;3 是一种基于 QUIC（Quick UDP Internet Connections）协议的 HTTP 协议版本，它是 HTTP&#x2F;2 的后继者，旨在改进 Web 性能和安全性。 HTTP&#x2F;3 与之前的 HTTP 协议有很大的不同，最明显的区别是它使用 QUIC 协议而不是 TCP 协议来传输数据。 QUIC">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pan.alybaba.top/images/nginx-logo.png">
+<meta property="article:published_time" content="2023-05-21T13:01:00.000Z">
+<meta property="article:modified_time" content="2023-07-11T05:26:55.000Z">
+<meta property="article:author" content="lee">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="http3">
+<meta property="article:tag" content="quic">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pan.alybaba.top/images/nginx-logo.png"><link rel="shortcut icon" href="/img/adc51ac83a4784bfd25c7cae243b405.png"><link rel="canonical" href="https://blog.alybaba.top/2023/05/21/nginx%E7%BC%96%E8%AF%912/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'client=ca-pub-9239046296019160"',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '如何让nginx支持QUIC和HTTP3',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-11 13:26:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pan.alybaba.top/images/nginx-logo.png')"><nav id="nav"><span id="blog-info"><a href="/" title="破站"><span class="site-name">破站</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">如何让nginx支持QUIC和HTTP3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-21T13:01:00.000Z" title="发表于 2023-05-21 21:01:00">2023-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-11T05:26:55.000Z" title="更新于 2023-07-11 13:26:55">2023-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/">实用教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="如何让nginx支持QUIC和HTTP3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="什么是-HTTP-3-和-QUIC-？"><a href="#什么是-HTTP-3-和-QUIC-？" class="headerlink" title="什么是 HTTP&#x2F;3 和 QUIC ？"></a>什么是 HTTP&#x2F;3 和 QUIC ？</h1><ul>
+<li>HTTP&#x2F;3 是一种基于 QUIC（Quick UDP Internet Connections）协议的 HTTP 协议版本，它是 HTTP&#x2F;2 的后继者，旨在改进 Web 性能和安全性。</li>
+<li>HTTP&#x2F;3 与之前的 HTTP 协议有很大的不同，最明显的区别是它使用 QUIC 协议而不是 TCP 协议来传输数据。</li>
+<li>QUIC 是一种由 Google 开发的协议，基于 UDP，它在保持安全性的同时提供更快的连接和更少的延迟。与 TCP 不同，QUIC 允许多个请求同时在同一连接上进行，从而减少了网络拥塞和握手延迟的影响。</li>
+</ul>
+<h2 id="参考图"><a href="#参考图" class="headerlink" title="参考图"></a>参考图</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/http.png" alt="http三种协议"></p>
+<h2 id="那么接下来我将介绍几种常见nginx编译http3的方法"><a href="#那么接下来我将介绍几种常见nginx编译http3的方法" class="headerlink" title="那么接下来我将介绍几种常见nginx编译http3的方法"></a>那么接下来我将介绍几种常见nginx编译http3的方法</h2><h2 id="基于谷歌boringssl编译"><a href="#基于谷歌boringssl编译" class="headerlink" title="基于谷歌boringssl编译"></a>基于谷歌boringssl编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我直接在root家目录进行的操作，请注意你们的目录</span></span><br><span class="line">apt update &amp;&amp; apt install build-essential ca-certificates zlib1g-dev libpcre3 libpcre3-dev tar unzip libssl-dev wget curl git cmake ninja-build hgsubversion</span><br><span class="line"><span class="comment">#安装相关依赖</span></span><br><span class="line">apt install software-properties-common -y</span><br><span class="line">add-apt-repository ppa:longsleep/golang-backports</span><br><span class="line">apt install golang</span><br><span class="line">go --version</span><br><span class="line"><span class="comment">#默认源安装的go版本过低...</span></span><br><span class="line">git <span class="built_in">clone</span>  https://github.com/google/boringssl.git</span><br><span class="line"><span class="comment">#拉取项目，国内兄弟自己找镜像站点，我服务器在国外，这玩意大的很</span></span><br><span class="line"><span class="built_in">cd</span> boringssl/</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="comment">#存放编译文件</span></span><br><span class="line"><span class="built_in">cd</span> build/</span><br><span class="line">cmake -GNinja ..</span><br><span class="line">ninja</span><br><span class="line"><span class="comment">#这个编译非常吃内存，我服务器一G内存直接原地爆炸，最好是拉到好点配置的机子上编译好，不然真的容易爆炸。</span></span><br><span class="line"><span class="comment">#我这里编译了一份，点击这里查看[openssl已编译打包好](http://pan.alybaba.top/openssl.tar.gz)</span></span><br><span class="line"></span><br><span class="line">hg <span class="built_in">clone</span> -b quic https://hg.nginx.org/nginx-quic</span><br><span class="line"><span class="comment">#hg跟git差不多</span></span><br><span class="line">或者wget https://hg.nginx.org/nginx-quic/archive/quic.tar.gz</span><br><span class="line">tar xf quic.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-quic-8057e053480a</span><br><span class="line">nginx -V</span><br><span class="line">./auto/configure  you nginx config  --with-http_v3_module --with-stream_quic_module --with-cc-opt=<span class="string">&quot;-I../boringssl/include&quot;</span> --with-ld-opt=<span class="string">&quot;-L../boringssl/build/ssl -L../boringssl/build/crypto&quot;</span></span><br><span class="line"><span class="comment">#复制自己nginx的配置，然后把http3的选项加上即可，没什么问题就接着往下编译</span></span><br><span class="line">make -j$(<span class="built_in">nproc</span> --all)</span><br><span class="line"><span class="comment">#我用虚拟机分的8核编译，没问题的话应该会多出来一个objs的目录,里面会有一个二进制文件</span></span><br><span class="line"><span class="built_in">cp</span> -af objs/nginx   /sbin/nginx </span><br><span class="line"><span class="comment">#替换当前</span></span><br><span class="line">vim /etc/nginx/conf.d/http3.conf</span><br><span class="line">server&#123;</span><br><span class="line">        listen 443 quic reuseport;</span><br><span class="line">        listen 443 ssl http2;</span><br><span class="line">        server_name  you domain name;</span><br><span class="line">        ssl_certificate /you/path/you.pem;</span><br><span class="line">        ssl_certificate_key /you/path/you.key;</span><br><span class="line">        ssl_protocols  TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line">        add_header alt-svc <span class="string">&#x27;h3-23=&quot;:443&quot;; ma=86400&#x27;</span>;</span><br><span class="line">        <span class="comment">#这个声明是必须的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#对了，想实现http3，必需要安装证书，推荐acme.sh或者certbot，实在不行就用openssl自签。</span></span><br><span class="line"></span><br><span class="line">iptables -IINPUT -p udp --dport 443 -j ACCEPT</span><br><span class="line">iptables -IINPUT -p tcp --dport 443 -j ACCEPT</span><br><span class="line"><span class="comment">#最后的话去控制台防火墙开一下443的UDP端口，(ps:命令行不起作用，可能我太菜，最好还是去控制台开一下)TCP也要开一下</span></span><br><span class="line">netstat -nupl</span><br><span class="line"><span class="comment">#查看udp端口是否监听</span></span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<h2 id="基于OpenSSL的quictlc编译"><a href="#基于OpenSSL的quictlc编译" class="headerlink" title="基于OpenSSL的quictlc编译"></a>基于OpenSSL的quictlc编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/quictls/openssl.git</span><br><span class="line"><span class="built_in">cd</span>  openssl</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line">./Configure --prefix=/root/openssl/build --openssldir=./build</span><br><span class="line"><span class="comment">#配置路径，第一个必须要绝对路径</span></span><br><span class="line">make -j$(<span class="built_in">nproc</span> --all) &amp;&amp; make install_dev</span><br><span class="line"><span class="comment">#编译没问题的话，build文件夹里应该会有include和lib64的文件夹</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">cd</span> ../nginx-quic-8057e053480a</span><br><span class="line">nginx -V</span><br><span class="line">./auto/configure  you nginx config  --with-http_v3_module --with-stream_quic_module  --with-cc-opt=<span class="string">&quot;-I /root/openssl/include&quot;</span>  --with-ld-opt=<span class="string">&quot;-L /root/openssl/lib64&quot;</span></span><br><span class="line"><span class="comment">#那么没有问题的话这里也会生成objs目录，目录下也会有二进制文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这里有一点要注意的是他那个那个没有集成到nginx里面，所以需要把 lib64的两个库文件给复制到 /lib 目录下</span></span><br><span class="line"><span class="built_in">cp</span> -a ../openssl/build/lib64/*.81.3  /lib</span><br><span class="line"><span class="comment">#接下来参考谷歌boringssl编译</span></span><br></pre></td></tr></table></figure>
+<h2 id="基于Cloudflare的quiche编译"><a href="#基于Cloudflare的quiche编译" class="headerlink" title="基于Cloudflare的quiche编译"></a>基于Cloudflare的quiche编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">curl https://sh.rustup.rs -sSf | sh</span><br><span class="line"><span class="comment">#安装rust</span></span><br><span class="line"><span class="built_in">source</span> ~/.profile</span><br><span class="line"><span class="comment">#生效变量</span></span><br><span class="line">wget https://nginx.org/download/nginx-1.16.1.tar.gz</span><br><span class="line"><span class="comment">#支持1.19.4</span></span><br><span class="line">tar xf nginx-1.16.1.tar.gz</span><br><span class="line">git <span class="built_in">clone</span>  https://github.com/cloudflare/quiche</span><br><span class="line"><span class="built_in">cd</span>  nginx-1.16.1</span><br><span class="line">patch -p01 &lt; ../quiche/nginx/nginx-1.16.patch</span><br><span class="line"><span class="comment">#打补丁2选1，这个是官方的，版本老点</span></span><br><span class="line">或curl https://raw.githubusercontent.com/kn007/patch/master/nginx_with_quic.patch | patch -p1</span><br><span class="line"><span class="comment">#实测打这个补丁在make时会报错，需要从其他版本替换一个同名c文件，我替换的是1.14.1，其他自行测试</span></span><br><span class="line"></span><br><span class="line">curl https://raw.githubusercontent.com/kn007/patch/master/Enable_BoringSSL_OCSP.patch | patch -p1</span><br><span class="line"><span class="comment">#支持 OCSP Stapling</span></span><br><span class="line"></span><br><span class="line">./configure 你的其他nginx模块 --with-http_v3_module --with-openssl=../quiche/quiche/deps/boringssl --with-quiche=../quiche</span><br><span class="line"><span class="comment">#这是需要添加的项，后面两个请根据自己的路径来</span></span><br><span class="line">make -j$(<span class="built_in">nproc</span> --all)</span><br><span class="line"><span class="comment">#接下来请参考boringssl编译</span></span><br></pre></td></tr></table></figure>
+<h2 id="基于官方安装，redhat需9以上，ubuntu需22-04"><a href="#基于官方安装，redhat需9以上，ubuntu需22-04" class="headerlink" title="基于官方安装，redhat需9以上，ubuntu需22.04"></a>基于官方安装，redhat需9以上，ubuntu需22.04</h2><h3 id="请参考官网"><a href="#请参考官网" class="headerlink" title="请参考官网"></a>请参考<a target="_blank" rel="noopener" href="https://quic.nginx.org/packages.html">官网</a></h3><h2 id="下载别人编译好的二进制文件或者安装包"><a href="#下载别人编译好的二进制文件或者安装包" class="headerlink" title="下载别人编译好的二进制文件或者安装包"></a>下载别人编译好的二进制文件或者安装包</h2><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nc -z -v -u IP地址 443 </span><br><span class="line"><span class="comment">#发送一个udp数据包</span></span><br><span class="line">tcpdump -i 你的网卡名 -A -s0 port 443 and udp</span><br><span class="line"><span class="comment">#打开浏览器的开发工具，通常是F12，点击网络，刷新也可查看当前使用的网络协议</span></span><br></pre></td></tr></table></figure>
+<h2 id="在线测试链接"><a href="#在线测试链接" class="headerlink" title="在线测试链接"></a><a target="_blank" rel="noopener" href="https://http3check.net/">在线测试链接</a></h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li><del>反正我编译不下十遍了，一直不支持，怀疑是防火墙问题…</del></li>
+<li>注意，QUICh还是一个相对较新的协议，在某些情况下可能与特定的网络环境不兼容。在使用QUIC时，建议测试和评估其在特定环境中的性能和兼容性，不建议生产环境使用…</li>
+<li>国内对UDP不是太友好，容易qos。我指的是…其实是udp不容易溯源，且难以控制，对网络安全有一定的影响。</li>
+<li><del>可能还有其他的安装方法，这里我就不再演示了，因为我魔怔了…</del></li>
+<li>总的来说，HTTP&#x2F;3 的设计目标是通过减少延迟和提高性能，为 Web 应用程序提供更快、更安全和更高效的用户体验。感兴趣的可以自行尝试哈，毕竟是未来的趋势。</li>
+</ol>
+<h2 id="参考官方文献"><a href="#参考官方文献" class="headerlink" title="参考官方文献"></a>参考官方文献</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://quic.nginx.org/readme.html">https://quic.nginx.org/readme.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/quic.html">http://nginx.org/en/docs/quic.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_v3_module.html">http://nginx.org/en/docs/http/ngx_http_v3_module.html</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top">lee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top/2023/05/21/nginx%E7%BC%96%E8%AF%912/">https://blog.alybaba.top/2023/05/21/nginx%E7%BC%96%E8%AF%912/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.alybaba.top" target="_blank">破站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/nginx/">nginx</a><a class="post-meta__tags" href="/tags/http3/">http3</a><a class="post-meta__tags" href="/tags/quic/">quic</a></div><div class="post_share"><div class="social-share" data-image="https://pan.alybaba.top/images/nginx-logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lee</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://xw-l.github.io/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://xw-l.github.io/" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxw520321@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://t.me/leeshizhendepi" target="_blank" title="Telegram"><i class="fab fa-telegram" style="color: #3399FF;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-HTTP-3-%E5%92%8C-QUIC-%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是 HTTP&#x2F;3 和 QUIC ？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%9B%BE"><span class="toc-number">1.1.</span> <span class="toc-text">参考图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3%E4%B9%88%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%88%91%E5%B0%86%E4%BB%8B%E7%BB%8D%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81nginx%E7%BC%96%E8%AF%91http3%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">那么接下来我将介绍几种常见nginx编译http3的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E8%B0%B7%E6%AD%8Cboringssl%E7%BC%96%E8%AF%91"><span class="toc-number">1.3.</span> <span class="toc-text">基于谷歌boringssl编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EOpenSSL%E7%9A%84quictlc%E7%BC%96%E8%AF%91"><span class="toc-number">1.4.</span> <span class="toc-text">基于OpenSSL的quictlc编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ECloudflare%E7%9A%84quiche%E7%BC%96%E8%AF%91"><span class="toc-number">1.5.</span> <span class="toc-text">基于Cloudflare的quiche编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%EF%BC%8Credhat%E9%9C%809%E4%BB%A5%E4%B8%8A%EF%BC%8Cubuntu%E9%9C%8022-04"><span class="toc-number">1.6.</span> <span class="toc-text">基于官方安装，redhat需9以上，ubuntu需22.04</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E5%8F%82%E8%80%83%E5%AE%98%E7%BD%91"><span class="toc-number">1.6.1.</span> <span class="toc-text">请参考官网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%88%AB%E4%BA%BA%E7%BC%96%E8%AF%91%E5%A5%BD%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">1.7.</span> <span class="toc-text">下载别人编译好的二进制文件或者安装包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.8.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95%E9%93%BE%E6%8E%A5"><span class="toc-number">1.9.</span> <span class="toc-text">在线测试链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.10.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%AE%98%E6%96%B9%E6%96%87%E7%8C%AE"><span class="toc-number">1.11.</span> <span class="toc-text">参考官方文献</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/03/docker-redis/" title="docker构建redis"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/docker-facebook.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker构建redis"/></a><div class="content"><a class="title" href="/2023/07/03/docker-redis/" title="docker构建redis">docker构建redis</a><time datetime="2023-07-03T12:10:02.000Z" title="发表于 2023-07-03 20:10:02">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/30/redis-install/" title="Redis安装和多实例"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/redis.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis安装和多实例"/></a><div class="content"><a class="title" href="/2023/06/30/redis-install/" title="Redis安装和多实例">Redis安装和多实例</a><time datetime="2023-06-30T14:18:02.000Z" title="发表于 2023-06-30 22:18:02">2023-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/28/h3/" title="原来如此..."><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/v2-52ebc4a3cc0a850e18a52ab1aa1d83df_hd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="原来如此..."/></a><div class="content"><a class="title" href="/2023/06/28/h3/" title="原来如此...">原来如此...</a><time datetime="2023-06-28T08:48:42.000Z" title="发表于 2023-06-28 16:48:42">2023-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/keeplived/" title="编译安装keepalived"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/ubuntu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装keepalived"/></a><div class="content"><a class="title" href="/2023/06/26/keeplived/" title="编译安装keepalived">编译安装keepalived</a><time datetime="2023-06-26T13:20:02.000Z" title="发表于 2023-06-26 21:20:02">2023-06-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/haproxy/" title="编译安装haproxy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/Rocky.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装haproxy"/></a><div class="content"><a class="title" href="/2023/06/26/haproxy/" title="编译安装haproxy">编译安装haproxy</a><time datetime="2023-06-26T12:30:02.000Z" title="发表于 2023-06-26 20:30:02">2023-06-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pan.alybaba.top/images/nginx-logo.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By lee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a>欢迎</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

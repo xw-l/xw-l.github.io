@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>开源Docker仓库管理器Harbor | 破站</title><meta name="author" content="lee"><meta name="copyright" content="lee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="部署准备 安装docker和docker-compose 多台虚拟机…  部署步骤10.0.0.133更新 1apt update 这里使用官方脚本安装 1sh &lt;(curl -fsSL https:&#x2F;&#x2F;get.docker.com) 启动docker 1docker start docker 安装docker-compose 1234wget -O &#x2F;usr&#x2F;bin&#x2F;docker-comp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开源Docker仓库管理器Harbor">
+<meta property="og:url" content="https://blog.alybaba.top/2023/06/17/harbor/index.html">
+<meta property="og:site_name" content="破站">
+<meta property="og:description" content="部署准备 安装docker和docker-compose 多台虚拟机…  部署步骤10.0.0.133更新 1apt update 这里使用官方脚本安装 1sh &lt;(curl -fsSL https:&#x2F;&#x2F;get.docker.com) 启动docker 1docker start docker 安装docker-compose 1234wget -O &#x2F;usr&#x2F;bin&#x2F;docker-comp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pan.alybaba.top/images/harbor.png">
+<meta property="article:published_time" content="2023-06-17T13:41:02.000Z">
+<meta property="article:modified_time" content="2023-07-11T06:15:18.000Z">
+<meta property="article:author" content="lee">
+<meta property="article:tag" content="私有仓库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pan.alybaba.top/images/harbor.png"><link rel="shortcut icon" href="/img/adc51ac83a4784bfd25c7cae243b405.png"><link rel="canonical" href="https://blog.alybaba.top/2023/06/17/harbor/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'client=ca-pub-9239046296019160"',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '开源Docker仓库管理器Harbor',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-11 14:15:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pan.alybaba.top/images/harbor.png')"><nav id="nav"><span id="blog-info"><a href="/" title="破站"><span class="site-name">破站</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-bug"></i><span> 杂七杂八</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://www.desr.eu.org"><i class="fa-fw fas fa-link"></i><span> 以针会友</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-server"></i><span> 数据库</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Mysql</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Redis</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-database"></i><span> Elasticsearch</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-toolbox"></i><span> 容器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Kubernetes</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Docker</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Podman</span></a></li><li><a class="site-page child" href="/test"><i class="fa-fw fas fa-box"></i><span> Containerd</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">开源Docker仓库管理器Harbor</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-17T13:41:02.000Z" title="发表于 2023-06-17 21:41:02">2023-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-11T06:15:18.000Z" title="更新于 2023-07-11 14:15:18">2023-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/">实用教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="开源Docker仓库管理器Harbor"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="部署准备"><a href="#部署准备" class="headerlink" title="部署准备"></a>部署准备</h1><ul>
+<li>安装docker和docker-compose</li>
+<li>多台虚拟机…</li>
+</ul>
+<h1 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h1><p>10.0.0.133更新</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+<p>这里使用官方脚本安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh &lt;(curl -fsSL https://get.docker.com)</span><br></pre></td></tr></table></figure>
+<p>启动docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start docker</span><br></pre></td></tr></table></figure>
+<p>安装docker-compose</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget -O /usr/bin/docker-compose -P /usr/bin  \</span><br><span class="line">https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-x86_64</span><br><span class="line">或</span><br><span class="line">wget -O /usr/bin/docker-compose -P /usr/bin http://pan.alybaba.top/soft/docker-compose-linux-x86_64</span><br></pre></td></tr></table></figure>
+<p>添加执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose version</span><br></pre></td></tr></table></figure>
+<p>下载Harbor镜像包,这里是离线安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/goharbor/harbor/releases/download/v2.8.2/harbor-offline-installer-v2.8.2.tgz</span><br><span class="line">或</span><br><span class="line">wget http://pan.alybaba.top/soft/harbor-offline-installer-v2.8.2.tgz</span><br></pre></td></tr></table></figure>
+<p>解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xf harbor-offline-installer-v2.8.2.tgz -C /usr/local  </span><br></pre></td></tr></table></figure>
+<p>自签证书,创建存放自签证书目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /data/harbor/certs &amp;&amp; <span class="built_in">cd</span>  /data/harbor/certs</span><br></pre></td></tr></table></figure>
+<p>生成 CA（证书颁发机构）私钥 (ca.key) 和证书 (ca.crt)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out ca.key 4096</span><br><span class="line">openssl req -x509 -new -nodes -sha512 -days 3650  \</span><br><span class="line">-subj <span class="string">&quot;/C=CN/ST=Beijing/L=Beijing/O=example/OU=Personal/CN=test.com&quot;</span> \ </span><br><span class="line">-key ca.key -out ca.crt</span><br></pre></td></tr></table></figure>
+<p>生成 Harbor 服务器私钥 (harbor.test.com.key)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out harbor.test.com.key 4096</span><br></pre></td></tr></table></figure>
+<p>生成 Harbor 服务器证书签名请求 (harbor.test.com.csr)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl req -sha512 -new -subj <span class="string">&quot;/C=CN/ST=Beijing/L=Beijing/O=example/OU=Personal/CN=harbor.test.com&quot;</span> \</span><br><span class="line">-key harbor.test.com.key -out harbor.test.com.csr</span><br></pre></td></tr></table></figure>
+<p>创建 v3.ext 文件，指定证书扩展属性</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;&lt; <span class="string">EOF &gt; v3.ext </span></span><br><span class="line"><span class="string">authorityKeyIdentifier=keyid,issuer</span></span><br><span class="line"><span class="string">basicConstraints=CA:FALSE</span></span><br><span class="line"><span class="string">keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment</span></span><br><span class="line"><span class="string">extendedKeyUsage = serverAuth</span></span><br><span class="line"><span class="string">subjectAltName = @alt_names</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[alt_names]</span></span><br><span class="line"><span class="string">DNS.1=test.com</span></span><br><span class="line"><span class="string">DNS.2=test</span></span><br><span class="line"><span class="string">DNS.3=harbor.test.com</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+<p>使用 CA 证书和私钥，对之前生成的 CSR 进行签名，生成最终的 Harbor 服务器证书 (harbor.test.com.crt)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -req -sha512 -days 3650 -extfile v3.ext -CA ca.crt -CAkey ca.key \</span><br><span class="line">-CAcreateserial -<span class="keyword">in</span> harbor.test.com.csr -out harbor.test.com.crt</span><br></pre></td></tr></table></figure>
+<p>修改 harbor 部分相关参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /usr/local/harbor/harbor.yml.tmpl /usr/local/harbor/harbor.yml &amp;&amp; vim /usr/local/harbor/harbor.yml</span><br><span class="line">hostname: www.test.com</span><br><span class="line"><span class="comment">#这里需要修改hosts文件</span></span><br><span class="line">    certificate: /you/path/harbor.test.com.crt</span><br><span class="line">    private_key: /you/path/harbor.test.com.key</span><br><span class="line"><span class="comment">#你的证书和私钥存放的位置</span></span><br><span class="line">harbor_admin_password: Harbor12345</span><br><span class="line"><span class="comment"># Harbor12345是登录密码，可以修改成你想要的密码，账号是admin</span></span><br><span class="line"><span class="comment">#这里值得注意的是，会自动修改nginx的配置文件自动跳转https</span></span><br><span class="line">:wq</span><br></pre></td></tr></table></figure>
+<p><code>同时，这里要注意，因为是自签证书，浏览器访问还是会不信任，导致镜像无法推送</code><br><code>2种方法，第一，在客户端安装自签证书，第二写docker配置文件，这里就采用第二种了</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;&#123;\n&quot;insecure-registries&quot;: [&quot;harbor.test.com&quot;]\n&#125;&#x27;</span> &gt; /etc/docker/daemon.json</span><br><span class="line"><span class="comment">#意思是信任不安全的镜像仓库地址</span></span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>启动仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/harbor  &amp;&amp; ./install.sh &amp;&amp; ./prepare &amp;&amp; docker-compose up -d</span><br><span class="line"><span class="comment">#这里也可以使用docker-compose -f /you/path/docker-compose.yml up -d 指定文件所在路径后台启动</span></span><br></pre></td></tr></table></figure>
+<p>写入service文件，配置自启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;&lt; <span class="string">EOF &gt; /lib/systemd/system/harbor.service </span></span><br><span class="line"><span class="string">[Unit]</span></span><br><span class="line"><span class="string">Description=Harbor</span></span><br><span class="line"><span class="string">After=docker.service systemd-networkd.service systemd-resolved.service</span></span><br><span class="line"><span class="string">Requires=docker.service</span></span><br><span class="line"><span class="string">Documentation=http://github.com/vmware/harbor</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Service]</span></span><br><span class="line"><span class="string">Type=simple</span></span><br><span class="line"><span class="string">Restart=on-failure</span></span><br><span class="line"><span class="string">Restart=5</span></span><br><span class="line"><span class="string">ExecStart=/usr/bin/docker-compose -f /usr/local/harbor/docker-compose.yml up</span></span><br><span class="line"><span class="string">ExecStop=/usr/bin/docker-compose -f /usr/local/harbor/docker-compose.yml down</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Install]</span></span><br><span class="line"><span class="string">WantedBy=multi-user.target</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+<p>启动harbor</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br><span class="line"><span class="comment">#这里要注意，前面我们用docker-compose启动过的，这里我们关闭</span></span><br><span class="line">systemctl daemon-reload &amp;&amp; systemctl start harbor.service</span><br></pre></td></tr></table></figure>
+<p>linux登录仓库,输出Login Succeeded则成功，如出现其他报错，请检查日志或者报错原因</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login -u admin -p Harbor12345 harbor.test.com</span><br><span class="line"><span class="comment">#这里可以使用本机，也可以使用客户端，记得添加hosts解析以及docker信任配置</span></span><br></pre></td></tr></table></figure>
+<p>接下来我们去网页端登录看看,可以看到还是提示不安全，不交钱就是这样<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/harbor-login.jpg" alt="logi-page"><br>登录进去创建一个项目,我这边已经创建了<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/harbor-create.jpg" alt="create-project"><br>然后我们就来推送一个镜像试试，首先看看有什么镜像<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/harbor-docker-images.jpg" alt="see-what-we-got"><br><code>可以看到，我已经操作了一边。</code><br>首先重命名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker tag alpine-nginx:1.24.0-v3  harbor.test.com/nginx/alpine-nginx:1.24.0-v3</span><br><span class="line"><span class="comment">#harbor.test.com表示harbor仓库地址</span></span><br><span class="line"><span class="comment">#nginx表示你创建的项目的地址</span></span><br></pre></td></tr></table></figure>
+<p>接着推送就完成了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push  harbor.test.com/nginx/alpine-nginx:1.24.0-v3</span><br></pre></td></tr></table></figure>
+<p>然后也可以把镜像拉下来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull  harbor.test.com/nginx/alpine-nginx:1.24.0-v3</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/harbor-pull.jpg" alt="pull-images"><br>在web端我们也可以看到镜像，harbor还压缩了<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/harbor-images.jpg" alt="see-pull-images"><br><code>这里虽然完成的harbor的部署，但是始终是一个单点问题，所有接下来我们继续部署高可用harbor</code><br>使用另一台空闲机10.0.0.132安装 docker 和 docker-compose 环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sh &lt;(curl -fsSL https://get.docker.com) &amp;&amp; wget -O /usr/bin/docker-compose  -P \</span><br><span class="line">/usr/bin  http://pan.alybaba.top/soft/docker-compose-linux-x86_64 \</span><br><span class="line">&amp;&amp; <span class="built_in">chmod</span> +x /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>harbor包和service文件我已经用scp命令拷贝过来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar xf harbor-offline-installer-v2.8.2.tgz -C /usr/local &amp;&amp; <span class="built_in">cd</span> /usr/local/harbor</span><br><span class="line">sed -i <span class="string">&#x27;s/hostname: reg.mydomain.com/hostname: 10.0.0.132/&#x27;</span>  harbor.yml</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;&#123;\n&quot;insecure-registries&quot;: [&quot;10.0.0.132&quot;]\n&#125;&#x27;</span> &gt; /etc/docker/daemon.json</span><br><span class="line">./install.sh  &amp;&amp; ./prepare &amp;&amp; systemctl daemon-reload</span><br><span class="line">systemctl start docker harbor.service</span><br></pre></td></tr></table></figure>
+<p>那么我登上前面配置的harbor上进行高可用配置，前面的ip地址是133，它对应的仓库地址就是132<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/harbor-hight-use.jpg" alt="create-target"><br>做完这里，在 10.0.0.133  push镜像时已经可以同步到10.0.0.132了，那么132也同理配置，这里就不再过多叙述<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/harbor-hight-use-2.jpg" alt="create-policy"></p>
+<h1 id="部分参考资料"><a href="#部分参考资料" class="headerlink" title="部分参考资料"></a>部分参考资料</h1><ul>
+<li>docker-compose 官方下载地址: <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">https://docs.docker.com/compose/</a></li>
+<li>docker 官方文档安装地址：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></li>
+<li>harbor 下载地址: <a target="_blank" rel="noopener" href="https://github.com/vmware/harbor/releases">https://github.com/vmware/harbor/releases</a></li>
+<li>harbor 安装文档: <a target="_blank" rel="noopener" href="https://github.com/goharbor/harbor/blob/master/docs/install-config/_index.md">https://github.com/goharbor/harbor/blob/master/docs/install-config/_index.md</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top">lee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.alybaba.top/2023/06/17/harbor/">https://blog.alybaba.top/2023/06/17/harbor/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.alybaba.top" target="_blank">破站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93/">私有仓库</a></div><div class="post_share"><div class="social-share" data-image="https://pan.alybaba.top/images/harbor.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/30/Nexus/" title="开源仓库管理器Nexus"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/nexus.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-30</div><div class="title">开源仓库管理器Nexus</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/adc51ac83a4784bfd25c7cae243b405.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lee</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">42</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://xw-l.github.io/"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://xw-l.github.io/" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxw520321@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://t.me/leeshizhendepi" target="_blank" title="Telegram"><i class="fab fa-telegram" style="color: #3399FF;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">部署准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">部署步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">部分参考资料</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/03/docker-redis/" title="docker构建redis"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/docker-facebook.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker构建redis"/></a><div class="content"><a class="title" href="/2023/07/03/docker-redis/" title="docker构建redis">docker构建redis</a><time datetime="2023-07-03T12:10:02.000Z" title="发表于 2023-07-03 20:10:02">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/30/redis-install/" title="Redis安装和多实例"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/redis.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis安装和多实例"/></a><div class="content"><a class="title" href="/2023/06/30/redis-install/" title="Redis安装和多实例">Redis安装和多实例</a><time datetime="2023-06-30T14:18:02.000Z" title="发表于 2023-06-30 22:18:02">2023-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/28/h3/" title="原来如此..."><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/v2-52ebc4a3cc0a850e18a52ab1aa1d83df_hd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="原来如此..."/></a><div class="content"><a class="title" href="/2023/06/28/h3/" title="原来如此...">原来如此...</a><time datetime="2023-06-28T08:48:42.000Z" title="发表于 2023-06-28 16:48:42">2023-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/keeplived/" title="编译安装keepalived"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/ubuntu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装keepalived"/></a><div class="content"><a class="title" href="/2023/06/26/keeplived/" title="编译安装keepalived">编译安装keepalived</a><time datetime="2023-06-26T13:20:02.000Z" title="发表于 2023-06-26 21:20:02">2023-06-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/26/haproxy/" title="编译安装haproxy"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pan.alybaba.top/images/Rocky.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装haproxy"/></a><div class="content"><a class="title" href="/2023/06/26/haproxy/" title="编译安装haproxy">编译安装haproxy</a><time datetime="2023-06-26T12:30:02.000Z" title="发表于 2023-06-26 20:30:02">2023-06-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pan.alybaba.top/images/harbor.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By lee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a>欢迎</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
