@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title></title>
+      <title>test</title>
       <link href="/2023/07/22/test/"/>
       <url>/2023/07/22/test/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="github推送测试页面"><a href="#github推送测试页面" class="headerlink" title="github推送测试页面"></a>github推送测试页面</h2><hr /><p>test page</p>]]></content>
       
       
+      <categories>
+          
+          <category> github </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> github </tag>
+            
+        </tags>
       
     </entry>
     
