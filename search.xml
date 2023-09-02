@@ -1073,12 +1073,50 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
     <title>nginx 目录优化保姆级教程</title>
     <url>/2023/03/21/%E7%BC%96%E8%AF%91nginx/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>记录一次nginx编译<br>    众所周知，做一个最简单的网盘就是使用web服务了，但是不管是nginx和apache或者apache2的默认网页目录都太丑了，所以怎么能自定义修改默认的目录风格呢？<br>以nginx为例，官方的autoindex模块只是简单的提供了以下几个选项</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">命令			默认值	可选值		作用域			作用</span><br><span class="line"></span><br><span class="line">autoindex		off	on/off		http/server/location	开启目录浏览功能</span><br><span class="line"></span><br><span class="line">autoindex_format	html	html/xml	same			html是以网页功能展示目录内容</span><br><span class="line">				json/jsonp</span><br><span class="line">autoindex_exact_size	on	on/off		same			开启为以字节，关闭为KB,MB,GB显示文件</span><br><span class="line">									autoindex_format为html时有效</span><br><span class="line">autoindex_localtime	off	on/off		same			开启以服务器的文件时间作为显示的时间</span><br><span class="line">									autoindex_format为html时有效</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">默认值</th>
+<th align="left">可选值</th>
+<th align="left">作用域</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">autoindex</td>
+<td align="left">off</td>
+<td align="left">on&#x2F;off</td>
+<td align="left">http&#x2F;server&#x2F;location</td>
+<td align="left">开启目录浏览功能</td>
+</tr>
+<tr>
+<td align="left">autoindex_format</td>
+<td align="left">html</td>
+<td align="left">html&#x2F;xml&#x2F;json&#x2F;jsonp</td>
+<td align="left">same</td>
+<td align="left">html是以网页功能展示目录内容</td>
+</tr>
+<tr>
+<td align="left">autoindex_exact_size</td>
+<td align="left">on</td>
+<td align="left">on&#x2F;off</td>
+<td align="left">same</td>
+<td align="left">开启为以字节，关闭为KB,MB,GB显示文件&#x2F;autoindex_format为html时有效</td>
+</tr>
+<tr>
+<td align="left">autoindex_localtime</td>
+<td align="left">off</td>
+<td align="left">on&#x2F;off</td>
+<td align="left">same</td>
+<td align="left">开启以服务器的文件时间作为显示的时间&#x2F;autoindex_format为html时有效</td>
+</tr>
+</tbody></table>
 <p>首先安装nginx,	 注意！这里演示的是安装后编译再增加,也可以编译时添加模块再安装,这里就不在做过多的展示</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum or apt update &amp;&amp; yum or apt upgrade</span><br><span class="line">yum or apt install nginx -y</span><br><span class="line">systemctl start nginx或者/sbin/nginx -s start</span><br></pre></td></tr></table></figure>
 <p>根据根据官方给的autoindex模版，一个简单的web网盘配置如下</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">	http</span><br><span class="line">	&#123; </span><br><span class="line"><span class="comment">#注意一条配置接一个分号，其次一般来说一行一个配置</span></span><br><span class="line">		root	/you/path/www/;	//root为nginx根目录，这里是指定nginx目录所在，一般来说自动配置了，这里是自定义</span><br><span class="line">		autoindex		on;	//开启目录浏览功能</span><br><span class="line">		autoindex_format	html;	//以html风格将目录展示在浏览器中，一般都是html</span><br><span class="line">		autoindex_exact_size	off;	//假如开启将会以字节显示文件大小，最好是关闭</span><br><span class="line">		autoindex_localtime	on;	//以服务器的时间作为显示的时间</span><br><span class="line">		charset utf-8,gbk;		//开启中文，假如有中文没有该选项将乱码显示</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>接着我们vi &#x2F;etc&#x2F;nginx&#x2F;nginx.conf把上面目录配置复制进去<br><img src="/images/11.jpg" alt="nginx 配置"><br>然后输入nginx -t或&#x2F;sbin&#x2F;nginx -t测试，输出success则继续输入systemctl restart nginx或&#x2F;sbin&#x2F;nginx  -s reload<br><img src="/images/2.png" alt="nginx 测试"><br>接着输入hostname -I，查看本机地址，注意可能会有多个地址，自己分辨<br><img src="/images/3.png" alt="查看本地ip"><br>注意:上面只是获取局域网地址，如果你是部署云请使用以下命令或脚本</p>
+<p>接着我们vi &#x2F;etc&#x2F;nginx&#x2F;nginx.conf把上面目录配置复制进去,这里直接写在全局模块了，也可自定义模块<br><img src="/images/11.jpg" alt="nginx 配置"><br>然后输入nginx -t或&#x2F;sbin&#x2F;nginx -t测试，输出success则继续输入systemctl restart nginx或&#x2F;sbin&#x2F;nginx  -s reload<br><img src="/images/2.png" alt="nginx 测试"><br>接着输入hostname -I，查看本机地址，注意可能会有多个地址，自己分辨<br><img src="/images/3.png" alt="查看本地ip"><br>注意:上面只是获取局域网地址，如果你是部署云请使用以下命令或脚本</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -Ls ip.tool.lu</span><br></pre></td></tr></table></figure>
 <p>然后打开浏览器输入你的ip地址,但是忘了一件事，开启端口，我使用的是rocky：<br>同时这里要注意，如果是云，图省事就直接在控制台把nginx配置所对应的端口打开，我这里以常见80为例</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd  --zone=public --add-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
@@ -1097,7 +1135,7 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xf ngx-fancyindex-0.5.2.tar.xz</span><br></pre></td></tr></table></figure>
 <p>然后前面的nginx -V的已编译信息直接复制过去，再跟上添加的模块路径执行脚本即可</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./configure  你已经安装编译的模块,这里太长，我就不复制了后面跟上要添加的模块就ok  --add-module=./ngx-fancyindex-0.5.2</span><br></pre></td></tr></table></figure>
-<p>接着编译，千万不要install，不然就nginx就费了因为你是安装后编译这个要注意</p>
+<p>接着编译，不要install，不然配置文件会被覆盖，因为你是安装后编译这个要注意</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make </span><br></pre></td></tr></table></figure>
 <p>注意:如果make这里很大几率报错，原因是缺少相关的依赖，所以请点击<a href="https://www.baidu.com/">这里</a>查询需要的依赖,再安装对应的编译依赖包</p>
 <p>完事后把编译好的二进制程序nginx替换掉现有的nginx，请先暂停nginx service<br>编译成功会在objs目录下生成一个新的nginx二进制可执行程序</p>
@@ -1112,7 +1150,7 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/nginx -t &amp;&amp; /sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
 <p>最终效果，也可以访问<a href="http://pan.alybaba.top/">这里</a>查看我做的效果</p>
 <p><img src="/images/7.png" alt="优化后的nginx目录"></p>
-<p>总结:其实还可以编译其他相关的nginx模块，这里就不再过多叙述，有兴趣的可前往github搜索…而且nginx还有很多有意思的配置，比如负载均衡，反向代理，正向代理等等…以后慢慢分享相关的玩法配置，在这里为什么我不使用apache呢？想必大家都知道log4j2零day漏洞了，这里就不再过多说明。但是编译过程最难的还是缺少相关依赖，对于一般人来说还是比较困难。总而言之，言而总之nginx是一个很高效且优质的代理web站点，学好不愁吃穿，当然在使用nginx时也要遵纪守法，不然就真的”不愁吃穿”了</p>
+<p>总结:其实还可以编译其他相关的nginx模块，这里就不再过多叙述，有兴趣的可前往github或官网搜索（需下载对应依赖，报错会提示）…而且nginx还有很多有意思的配置，比如负载均衡，反向代理，正向代理等等…以后慢慢分享相关的玩法配置，在这里为什么我不使用apache呢？想必大家都知道log4j2零day漏洞了，这里就不再过多说明。但是编译过程最难的还是缺少相关依赖，对于一般人来说还是比较困难。总而言之，言而总之nginx是一个很高效且优质的代理web站点。</p>
 ]]></content>
       <categories>
         <category>实用教程</category>
@@ -1151,8 +1189,8 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
   </entry>
   <entry>
     <title>某司网络规划设计</title>
-    <url>/2021/07/25/%E6%9F%90%E5%8F%B8%E7%BD%91%E7%BB%9C%E8%A7%84%E5%88%92/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>为了适应网络经济的飞速发展，扩大企业经营的规模和范围，方便企业内部和企业之间的交流，节省办公开销，提高企业的管理水平，企业发展Intranet （ 企业内部网） 已经是刻不容缓。现如今后如何应对瞬息万变、竞争激烈的国内外市场环境以及如何利用网络技术迅速提升企业核心竞争力就是成为企业成败的关键所在。<br>目前我国企业尤其是中小型企业网络建设正在如火如荼的进行着，此方案采用了国际高端品牌cisco 的网络设备，同时采用了当前重要的和使用广泛的网络体结构有OSI 体系结构和TCP&#x2F;IP 体系结构。以先进，安全，实用，可扩展，灵活为原则进行设计。本方案将以华图公司内部局域网的组建需求、实际应用为出发点，从中小型企业局域网的业务需求和传统网络技术入手，设计适用于中小型企业的组网方案，为公司营造一个一流的企业网络。</p>
+    <url>/2021/11/25/%E6%9F%90%E5%8F%B8%E7%BD%91%E7%BB%9C%E8%A7%84%E5%88%92/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>为了适应网络经济的飞速发展，扩大企业经营的规模和范围，方便企业内部和企业之间的交流，节省办公开销，提高企业的管理水平，企业发展Intranet （ 企业内部网） 已经是刻不容缓。现如今后如何应对瞬息万变、竞争激烈的国内外市场环境以及如何利用网络技术迅速提升企业核心竞争力就是成为企业成败的关键所在。<br>目前我国企业尤其是中小型企业网络建设正在如火如荼的进行着，此方案采用了国际高端品牌cisco 的网络设备，同时采用了当前重要的和使用广泛的网络体结构有OSI 体系结构和TCP&#x2F;IP 体系结构。以先进，安全，实用，可扩展，灵活为原则进行设计。本方案将以x公司内部局域网的组建需求、实际应用为出发点，从中小型企业局域网的业务需求和传统网络技术入手，设计适用于中小型企业的组网方案，为公司营造一个一流的企业网络。</p>
 <h1 id="部署准备"><a href="#部署准备" class="headerlink" title="部署准备"></a>部署准备</h1><ul>
 <li>安装 Cisco Packet Tracer</li>
 </ul>
@@ -1168,7 +1206,7 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
 <li>5.开放性<br>本次设计的中央集成管理系统将是一个完全开放性的系统，通过编制系统的接口软件将解决不同系统和产品间接口协议的“ 标准化”，以使他们之间具备“ 互操作性”。所有接口均基于标准的TCP&#x2F;IP 数据接口协议和内容。系统的开放性设计完全遵循国际主流标准以及工业标准。</li>
 </ul>
 <h2 id="公司概况及拓扑图"><a href="#公司概况及拓扑图" class="headerlink" title="公司概况及拓扑图"></a>公司概况及拓扑图</h2><p>在本次设计方案中主要是对x公司进行整体的网络设计，该公司分别设有行政部，研发部，财务部以及一个WWW服务器，分别连接在四台二层交换机上。</p>
-<h3 id="需求实现"><a href="#需求实现" class="headerlink" title="需求实现"></a>需求实现</h3><p>经过和华图公司领导谈话，网络建设完成后需实现以下几点:</p>
+<h3 id="需求实现"><a href="#需求实现" class="headerlink" title="需求实现"></a>需求实现</h3><p>经过和x公司领导谈话，网络建设完成后需实现以下几点:</p>
 <ul>
 <li>1.三层交换机SW1和SW2实现以太网通道。</li>
 <li>2.两台三层交换机分别配置VTP服务端，其他交换机为客户端。</li>
@@ -1336,7 +1374,7 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
 <h1 id="相关技术介绍及配置"><a href="#相关技术介绍及配置" class="headerlink" title="相关技术介绍及配置"></a>相关技术介绍及配置</h1><p>为了使公司网络高效、稳定的运行，便于管理与维护，对局域网交换和路由技术的相关方面进行了规范设计，包括EthernetChannel、VTP、VLAN、DHCP、PVST、OSPF、HSRP、ACL等。</p>
 <h2 id="VTP（VLAN-Trunking-Protocol）"><a href="#VTP（VLAN-Trunking-Protocol）" class="headerlink" title="VTP（VLAN Trunking Protocol）"></a>VTP（VLAN Trunking Protocol）</h2><p>VTP是VLAN中继协议，也被称为虚拟局域网干道协议。它是思科私有协议。作用是多台交换机在企业网中，配置VLAN工作量大，可以使用VTP协议，把一台交换机配置成VTP Server, 其余交换机配置成VTP Client,这样他们可以自动学习到server 上的VLAN 信息。<br>它是一个OSI参考模型第二层的通信协议，主要用于管理在同一个域的网络范围内VLANs的建立、删除和重命名。在一台VTP Server 上配置一个新的VLAN时，该VLAN的配置信息将自动传播到本域内的其他所有交换机。这些交换机会自动地接收这些配置信息，使其VLAN的配置与VTP Server保持一致，从而减少在多台设备上配置同一个VLAN信息的工作量，而且保持了VLAN配置的统一性。<br>VTP通过网络(ISL帧或cisco私有DTP帧)保持VLAN配置统一性。VTP在系统级管理增加，删除，调整的VLAN，自动地将信息向网络中其它的交换机广播。此外，VTP减小了那些可能导致安全问题的配置。便于管理,只要在VTP Server做相应设置,VTP Client会自动学习VTP SERVE上的VLAN信息。<br>具体配置命令如下所示:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SW1:</span><br><span class="line">SW1&gt;en</span><br><span class="line">SW1#conf t </span><br><span class="line">SW1(config)# vtp domain lxw    #域名为lxw，实际配置按公司领导需求配置</span><br><span class="line">SW1(config)# vtp mode serve</span><br><span class="line">SW1(config)# vtp password cisco</span><br><span class="line">SW1(config)# vtp version 2</span><br><span class="line"></span><br><span class="line">SW2:</span><br><span class="line">SW2&gt;en</span><br><span class="line">SW2#conf t</span><br><span class="line">SW2(config)# vtp domain lxw</span><br><span class="line">SW2(config)# vtp mode serve</span><br><span class="line">SW2(config)# vtp password cisco</span><br><span class="line">SW2(config)# vtp version 2</span><br><span class="line"></span><br><span class="line">SW3:</span><br><span class="line">SW3&gt;en</span><br><span class="line">SW3#conf t</span><br><span class="line">SW3(config)# vtp domain lxw</span><br><span class="line">SW3(config)# vtp mode client</span><br><span class="line">SW3(config)# vtp password cisco</span><br><span class="line">SW3(config)# vtp version 2</span><br><span class="line"></span><br><span class="line">SW4:</span><br><span class="line">SW4&gt;en</span><br><span class="line">SW4#conf t</span><br><span class="line">SW4(config)# vtp domain lxw</span><br><span class="line">SW4(config)# vtp mode client</span><br><span class="line">SW4(config)# vtp password cisco</span><br><span class="line">SW4(config)# vtp version </span><br><span class="line">SW5:</span><br><span class="line">SW5&gt;en</span><br><span class="line">SW5#conf t</span><br><span class="line">SW5(config)# vtp domain lxw</span><br><span class="line">SW5(config)# vtp mode client</span><br><span class="line"></span><br><span class="line">SW5(config)# vtp password cisco</span><br><span class="line">SW5(config)# vtp version 2</span><br><span class="line"></span><br><span class="line">SW6:</span><br><span class="line">SW6&gt;en</span><br><span class="line">SW6#conf t</span><br><span class="line">SW6(config)# vtp domain lxw</span><br><span class="line">SW6(config)# vtp mode client</span><br><span class="line">SW6(config)# vtp password cisco</span><br><span class="line">SW6(config)# vtp version 2</span><br><span class="line"></span><br><span class="line">#补充说明一下，域内的每台交换机都必须使用相同的域名，密码，VTP版本。不论是通过配置实现，还是由交换自动学到的。其中SW1-2为server，SW3-6为client。</span><br></pre></td></tr></table></figure>
-<h2 id="VLAN-（Virtual-Local-Area-Network）"><a href="#VLAN-（Virtual-Local-Area-Network）" class="headerlink" title="VLAN （Virtual Local Area Network）"></a>VLAN （Virtual Local Area Network）</h2><p>对于VLAN 的划分主要在接入层的端口上实施基于端口的VLAN 划分；这是最为普遍、快捷、易于管理的划分方法；按照华图公司的实际情况对公司的局域网进行合理VLAN 划分，可以减少网络内的广播数据包，杜绝广播风暴，增强网络的安全性能；提高公司网络运行效率，保证网络顺畅；易于维护和管理；可以区分不同的应用和用户，方便集团的管理与维护。<br>目前，我们所掌握的VLAN 划分方法为以下几种：按端口划分VLAN，按MAC地址划分VLAN，按网络层划分VLAN，按IP组播划分VLAN，基于规则的VLAN划分，按用户划分VLAN。<br>其中本次设计中采用的是常见的按照端口划分VLAN，这种划分VLAN 的方法是根据以太网交换机的端口来划分，IEEE802.1Q 规定了依据以太网交换机的端口来划分VLAN 的国际标准。这种划分方法的优点是定义VLAN 成员时非常简单，只要将所有的端口都只定义一下就可以了。<br>具体配置命令如下:</p>
+<h2 id="VLAN-（Virtual-Local-Area-Network）"><a href="#VLAN-（Virtual-Local-Area-Network）" class="headerlink" title="VLAN （Virtual Local Area Network）"></a>VLAN （Virtual Local Area Network）</h2><p>对于VLAN 的划分主要在接入层的端口上实施基于端口的VLAN 划分；这是最为普遍、快捷、易于管理的划分方法；按照x公司的实际情况对公司的局域网进行合理VLAN 划分，可以减少网络内的广播数据包，杜绝广播风暴，增强网络的安全性能；提高公司网络运行效率，保证网络顺畅；易于维护和管理；可以区分不同的应用和用户，方便集团的管理与维护。<br>目前，我们所掌握的VLAN 划分方法为以下几种：按端口划分VLAN，按MAC地址划分VLAN，按网络层划分VLAN，按IP组播划分VLAN，基于规则的VLAN划分，按用户划分VLAN。<br>其中本次设计中采用的是常见的按照端口划分VLAN，这种划分VLAN 的方法是根据以太网交换机的端口来划分，IEEE802.1Q 规定了依据以太网交换机的端口来划分VLAN 的国际标准。这种划分方法的优点是定义VLAN 成员时非常简单，只要将所有的端口都只定义一下就可以了。<br>具体配置命令如下:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SW1&gt;en</span><br><span class="line">SW1#conf t</span><br><span class="line">SW1(config)#vlan 10</span><br><span class="line">SW1(config-vlan)#name xingzheng  #由于要配置VLAN名称，不然可一次性创建</span><br><span class="line">SW1(config-vlan)#ex</span><br><span class="line">SW1(config)#vlan 20</span><br><span class="line">SW1(config-vlan)#name yanfa</span><br><span class="line">SW1(config-vlan)#ex</span><br><span class="line">SW1(config)#vlan 30</span><br><span class="line">SW1(config-vlan)#name caiwu</span><br><span class="line">SW1(config-vlan)#ex</span><br><span class="line">SW1(config)#vlan 40</span><br><span class="line">SW1(config-vlan)#name www</span><br><span class="line">SW1(config-vlan)#ex</span><br><span class="line">SW1(config)#int vlan 10</span><br><span class="line">SW1(config-if)#ip add 192.168.1.1 255.255.255.0  </span><br><span class="line">SW1(config-if)#no shutdown </span><br><span class="line">SW1(config-if)#ex</span><br><span class="line">SW1(config)#int vlan 20</span><br><span class="line">SW1(config-if)#ip add 192.168.2.1 255.255.255.0</span><br><span class="line">SW1(config-if)#no shutdown </span><br><span class="line">SW1(config-if)#ex</span><br><span class="line">SW1(config)#int vlan 30</span><br><span class="line">SW1(config-if)#ip add 192.168.3.1 255.255.255.0</span><br><span class="line">SW1(config-if)#no shutdown </span><br><span class="line">SW1(config-if)#ex</span><br><span class="line">SW1(config)#int vlan 40</span><br><span class="line">SW1(config-if)#ip add 192.168.4.1 255.255.255.0</span><br><span class="line">SW1(config-if)#no shutdown </span><br><span class="line">SW1(config-if)#ex</span><br><span class="line">SW1(config)#ex</span><br><span class="line">SW1#show vlan         #VLAN创建完成后可使用show vlan命令查看配置情况</span><br></pre></td></tr></table></figure>
 <h2 id="以太网通道（EthernetChannel）"><a href="#以太网通道（EthernetChannel）" class="headerlink" title="以太网通道（EthernetChannel）"></a>以太网通道（EthernetChannel）</h2><p>Ethernet Channel是指以太网信道，Ethernet Channel是由Cisco研发的技术，它旨在解决交换机与交换机之间的通信问题，方法是将多个快速以太网端口或吉比特以太网端口分组到一个逻辑通道中，使得所有接入层与分布层交换机之间的链路都被捆绑进了EtherChannel中，并且都处于转发模式中。也背称为以太端口捆绑、端口聚集或以太链路聚集，以太通道为交换机提供了端口捆绑的技术，允许两个交换机之间通过两个或多个端口并行连接，同时传输数据，以提供更高的带宽。通过端口聚集协议（PAgP） 建立以太通道。端口聚合是目前许多交换机支持的一个高级特性。<br>具体配置命令如下:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SW1&gt;en</span><br><span class="line">SW1#conf t</span><br><span class="line">SW1(config)#int range f0/8-9</span><br><span class="line">SW1(config-if-range)#switchport trunk encapsulation dot1q</span><br><span class="line">SW1(config-if-range)#switchport mode trunk</span><br><span class="line">SW1(config-if-range)#channel-group 1 mode on</span><br><span class="line"></span><br><span class="line">SW2&gt;en</span><br><span class="line">SW2#conf t</span><br><span class="line">SW2(config)#int range f0/8-9</span><br><span class="line">SW2(config-if-range)#switchport trunk encapsulation dot1q</span><br><span class="line">SW2(config-if-range)#switchport mode trunk</span><br><span class="line">SW2(config-if-range)#channel-group 1 mode on</span><br></pre></td></tr></table></figure>
@@ -1386,6 +1424,28 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
         <tag>ACL</tag>
         <tag>PVST</tag>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>打水晶头</title>
+    <url>/2022/03/21/%E6%B0%B4%E6%99%B6%E5%A4%B4%E5%88%B6%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>最近在公司发现我主机的网络非常慢，查看网络信息只有百兆，别人都是千兆网，怀疑水晶头制作不标准，于是重新制作水晶头</p>
+<h1 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h1><ul>
+<li>剪线钳</li>
+<li>超五类网线和五类水晶头若干(虽然我能一次成功)</li>
+<li>测线仪</li>
+</ul>
+<h1 id="制作过程"><a href="#制作过程" class="headerlink" title="制作过程"></a>制作过程</h1><p>1.剥开网线的绝缘层，露出四根双绞线<br><img src="/images/cat5e.jpg"><br>2.按照“橙白-橙-绿白-蓝-蓝白-绿-棕白-棕”的顺序依次将线排列好，并将线平展<br><img src="/images/cat5e-2.jpg"><br>3.将排列并平展的网线，放入水晶头里面<br><img src="/images/cat5e-3.jpg"><br>4.利用网线钳，将网线和水晶头固定<br>5.利用测线仪，测试网线是否通畅,或者直接上机测试查看网络是否千兆</p>
+<h1 id="关于568A和586B"><a href="#关于568A和586B" class="headerlink" title="关于568A和586B"></a>关于568A和586B</h1><p>以前在学习时说要按照顺序来接线，实际上只要两端的八根线一一对应上即可，至于抗不抗干扰，没有实际过多的体会<br>其次如果是百兆网，直接使用1236线，也就是，橙白-橙-绿白-绿即可通信<br>工作中还是建议按照568b顺序来，毕竟成双结对抗干扰<br>至于568A，现在的设备都会自适应，所以基本上不用交叉线了</p>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>Cat5e</tag>
+        <tag>水晶头</tag>
+        <tag>568A</tag>
+        <tag>568B</tag>
       </tags>
   </entry>
 </search>
