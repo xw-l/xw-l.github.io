@@ -1448,4 +1448,34 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
         <tag>568B</tag>
       </tags>
   </entry>
+  <entry>
+    <title>解决Oracle不能发送邮件问题</title>
+    <url>/2023/09/25/Oracle_mail/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>前阵子搭了个Promethues + Grafana + Nginx 监控自己服务器，然后发现每台服务器的ssh爆破数暴涨至3w（平时就1.2千不到），防火墙我把服务端，客户端v4和v6的api端口都进行了相关限制，按理说不应该，后来想想普罗米修斯的流量是没有进行https传输的，我想可能是有大哥抓包搞定了我所有服务器的源IP，改天去配置https传输，无所谓，反正我密钥，随便爆破，有本事多线程干我。现在想配置下altmanager邮箱告警功能，突然发现Oracle的小鸡用mailx和postfix无法发送邮件，百思不得其解，后度娘得知Oracle在2021年就关闭了25端口，需要跟客服申请工单才能开启，于是我使用了mutt发送解决了该问题，下面是解决步骤</p>
+<h1 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h1><p>卸载原有邮箱客户端</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt remove bsd-mailx postfix -y</span><br></pre></td></tr></table></figure>
+<p>安装mutt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install mutt -y</span><br></pre></td></tr></table></figure>
+<p>在配置文件尾添加个人配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/Muttrc</span><br><span class="line"></span><br><span class="line">set from = &quot;leexww@hotmail.com&quot;</span><br><span class="line">#发件邮箱</span><br><span class="line">set realname = &quot;lee&quot;</span><br><span class="line">#发件人别名</span><br><span class="line">set smtp_url = &quot;smtp://leexww@hotmail.com@smtp.office365.com:587/&quot;</span><br><span class="line">#发件smtp服务</span><br><span class="line">set smtp_pass = &quot;you_passwd&quot;</span><br><span class="line">#邮箱登录密钥</span><br></pre></td></tr></table></figure>
+<p>测试发送邮件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Test&quot;</span> | mutt -s <span class="string">&quot;Title&quot;</span> xxxxxxx@qq.com</span><br></pre></td></tr></table></figure>
+<p>成功收到邮件<br><img src="/images/set_mail_succeed.jpg"><br>顺便贴一下我的mail.rc配置，我是用微软和QQ都测试了一遍,还开了25端口防火墙，连通没问题，反正就是发不了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/mail.rc</span><br><span class="line"><span class="built_in">set</span> from=my_mail@qq.com <span class="comment">#发件箱                    </span></span><br><span class="line"><span class="built_in">set</span> smtp=smtp.qq.com <span class="comment">#smtp服务器</span></span><br><span class="line"><span class="built_in">set</span> smtp-auth-user=my_mail@qq.com <span class="comment">#发件人</span></span><br><span class="line"><span class="built_in">set</span> smtp-auth-password=my_passwd <span class="comment">#授权码</span></span><br><span class="line"><span class="built_in">set</span> smtp-auth=login</span><br><span class="line"><span class="built_in">set</span> ssl-verify=ignore <span class="comment">#忽略证书认证</span></span><br><span class="line"></span><br><span class="line">iptables -IINPUT -p tcp --dport 25 -j ACCEPT </span><br><span class="line">lastb | awk <span class="string">&#x27;&#123;print $3&#125;&#x27;</span> | <span class="built_in">sort</span> | <span class="built_in">uniq</span> -c | <span class="built_in">sort</span> -nr &gt; ip_fail_collect</span><br><span class="line"><span class="comment">#顺便可查看哪些大兄弟搞你，我看下我的，基本上都是国内肉鸡</span></span><br></pre></td></tr></table></figure>
+<p>防火墙截图，突然发现还可以再简化合并规则，以后有空再说把<br><img src="/images/iptables-rules.jpg"></p>
+<h1 id="部署总结"><a href="#部署总结" class="headerlink" title="部署总结"></a>部署总结</h1><ol>
+<li>url开始填的smtps，提示握手失败..不太懂，反正能用就行</li>
+<li>至于原因是真没搞懂，为什么mailx就不行，也可能是我配置不对</li>
+<li>然后我还是每台服务器都安装了fail2ban来进行防御把，毕竟意思意思一下</li>
+<li>红帽系配置应无多大差距</li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux基础</category>
+      </categories>
+      <tags>
+        <tag>Oracle</tag>
+        <tag>Mail</tag>
+      </tags>
+  </entry>
 </search>
