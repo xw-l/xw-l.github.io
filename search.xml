@@ -1478,4 +1478,21 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
         <tag>Mail</tag>
       </tags>
   </entry>
+  <entry>
+    <title>关于Docker防火墙</title>
+    <url>/2023/10/27/%E5%85%B3%E4%BA%8Edocker%E9%98%B2%E7%81%AB%E5%A2%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>最近我在使用docker容器镜像的时候，发现Docker暴露的端口并不受iptables管控(之前也遇到过)，特地去百度了一下，太深的也说不上来，只是Docker也是调用的内核防火墙，那么如何解决呢，有以下几种方法：</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><ul>
+<li>1.一般大厂上面还会有一层防火墙安全组，可在安全组进行端口管控。</li>
+<li>2.在启动容器时，监听地址改为127.0.0.1,这样也可解决。</li>
+<li>3.在daemon.json配置文件中添加 “iptables” : false,注意，如果有 V6 需求，那么只能修改监听地址了，实际测试，我配置了false之后，容器无法获取V6地址。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>容器</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
 </search>
