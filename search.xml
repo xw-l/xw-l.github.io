@@ -1513,6 +1513,7 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
 <li>1.这个机器我还有个sftp，不知道受影响不，应该也要改成响应的端口才能访问我的资源</li>
 <li>2.该蜜罐特点为所有命令均可执行(提示”command not found”)，所有用户及密码均可登录</li>
 <li>3.项目地址 <a href="https://github.com/jaksi/sshesame">https://github.com/jaksi/sshesame</a></li>
+<li>4.补充一点，云服务器一定要使用密钥登录，如果是密码，请生成超级复杂密码，否则就是挖矿，或者成为”肉鸡”</li>
 </ul>
 ]]></content>
       <categories>
