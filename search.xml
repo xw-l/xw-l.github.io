@@ -1496,4 +1496,32 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
         <tag>docker</tag>
       </tags>
   </entry>
+  <entry>
+    <title>搭建SSH蜜罐，戏耍肉鸡</title>
+    <url>/2023/11/06/%E6%90%AD%E5%BB%BAssh%E8%9C%9C%E7%BD%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>最近可以看到，服务器被爆破次数越来越多，虽然是密钥，但是本着不能让”肉鸡”们白来一趟的原则，我想到了搭建蜜罐来响应”肉鸡们”,之前就想过搭个mysql蜜罐，一直没有空，今天偶然在论坛看见了，就顺手搭建了。</p>
+<h1 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h1><p>首先修改ssh配置文件的默认端口，以免跟docker冲突</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">Port new_port</span><br><span class="line"></span><br><span class="line">systemctl restart sshd</span><br><span class="line">iptables -IINPUT -p tcp --dport new_port -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>接着部署docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install docker.io</span><br><span class="line">dnf install docker-ce</span><br><span class="line">dnf install podman</span><br></pre></td></tr></table></figure>
+<p>拉取运行蜜罐容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name ssh -p 22:2022 ghcr.io/jaksi/sshesame</span><br></pre></td></tr></table></figure>
+<p>然后查看日志</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker logs ssh</span><br></pre></td></tr></table></figure>
+<p>可以看到奇奇怪怪的命令，第一个是我自己连的，马上就有肉鸡光顾了。生意别提多好了<br><img src="/images/1699261603735.jpg"></p>
+<h1 id="部署总结"><a href="#部署总结" class="headerlink" title="部署总结"></a>部署总结</h1><ul>
+<li>1.这个机器我还有个sftp，不知道受影响不，应该也要改成响应的端口才能访问我的资源</li>
+<li>2.该蜜罐特点为所有命令均可执行(提示”command not found”)，所有用户及密码均可登录</li>
+<li>3.项目地址 <a href="https://github.com/jaksi/sshesame">https://github.com/jaksi/sshesame</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>容器</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>网络安全</tag>
+        <tag>SSH</tag>
+      </tags>
+  </entry>
 </search>
