@@ -1554,4 +1554,28 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
         <tag>Github</tag>
       </tags>
   </entry>
+  <entry>
+    <title>简单扩容内存</title>
+    <url>/2023/11/06/swap/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>之前购买的国外主机发现内存只有128mb，安装个nginx基本上就差不多了，所以需要添加swap，步骤如下</p>
+<h1 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h1><p>首先查看是否已经有swap文件或者swap内存</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">free -h</span><br><span class="line">swapon -s</span><br></pre></td></tr></table></figure>
+<p>那么我的是没有的，如果有那就不用看了，接着创建swap文件,一般来说swap内存为实际内存的一倍，我这里给多了。最佳应该是256</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=/swapfile bs=1M count=512</span><br></pre></td></tr></table></figure>
+<p>权限配置,防止恶意利用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 /swapfile</span><br></pre></td></tr></table></figure>
+<p>转换swap</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkswap /swapfile</span><br></pre></td></tr></table></figure>
+<p>启用swap</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">swapon /swapfile</span><br></pre></td></tr></table></figure>
+<p>到这里也就结束了，那么它下次开机启动还是会消失的，所以我们确保永久添加，需要写fstab文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;/swapfile none swap sw 0 0&#x27;</span> &gt;&gt; /etc/fstab</span><br><span class="line"><span class="comment">#注意这里新手最后手动添加</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux基础</category>
+      </categories>
+      <tags>
+        <tag>swap</tag>
+        <tag>虚拟内存</tag>
+      </tags>
+  </entry>
 </search>
