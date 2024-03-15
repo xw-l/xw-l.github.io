@@ -1578,4 +1578,27 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
         <tag>虚拟内存</tag>
       </tags>
   </entry>
+  <entry>
+    <title>云服务器忘记密码以及DD系统</title>
+    <url>/2024/03/15/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8ADD%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>相信很多人在使用云服务器的时候都会碰到系统忘记密码，或者弱密码被爆破修改，而各类厂商的云面板功能不一，比如国内腾讯和阿里都支持修改密码，而国外的甲骨文没有修改密码选项，那么此时不用着急，只要可以连接VNC，或者分离附加引导卷就不用进行重装系统等删除服务器数据之类的操作，那么接下来我就演示一下Oracle的流程</p>
+<h1 id="演示步骤"><a href="#演示步骤" class="headerlink" title="演示步骤"></a>演示步骤</h1><p>首先我们分离需要修改密码的机器的引导卷<br>![](&#x2F;images&#x2F;1710526648087.jpg）<br>然后在另一台机器上附加刚才分离的卷<br>![](&#x2F;images&#x2F;1710526979323.jpg）<br>然后在被附加的机器上执行一下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#建立连接</span></span><br><span class="line">sudo iscsiadm -m node -o new -T iqn.2015-02.oracle.boot:uefi -p 169.254.2.2:3260</span><br><span class="line">sudo iscsiadm -m node -o update -T iqn.2015-02.oracle.boot:uefi -n node.startup -v automatic</span><br><span class="line">sudo iscsiadm -m node -T iqn.2015-02.oracle.boot:uefi -p 169.254.2.2:3260 -l</span><br><span class="line"><span class="comment">#断开连接</span></span><br><span class="line">sudo iscsiadm -m node -T iqn.2015-02.oracle.boot:uefi -p 169.254.2.2:3260 -u</span><br><span class="line">sudo iscsiadm -m node -o delete -T iqn.2015-02.oracle.boot:uefi -p 169.254.2.2:3260</span><br></pre></td></tr></table></figure>
+<p>接着使用命令查看卷信息，一般来说是sdb，然后把efi分区挂载到目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l</span><br><span class="line">mount /dev/sdb15 /mnt</span><br></pre></td></tr></table></figure>
+<p>再接着就下载netboot文件,放到里面，然后我们直接分离(ps：其实这里已经可以使用DD对拷把卷重新换个系统，但是加入我们需要的是里面的数据)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://pan.alybaba.top/soft/netboot.xyz-arm64.efi</span><br><span class="line"><span class="built_in">chmod</span> 755 netboot.xyz-arm64.efi</span><br><span class="line"><span class="built_in">mv</span> netboot.xyz-arm64.efi /mnt/</span><br><span class="line"><span class="comment">#确认权限一致</span></span><br><span class="line"><span class="built_in">ls</span> /mnt/EFI/BOOT/ -al</span><br><span class="line"><span class="comment">#分离</span></span><br><span class="line">umount /mnt</span><br><span class="line">sudo iscsiadm -m node -T iqn.2015-02.oracle.boot:uefi -p 169.254.2.2:3260 -u</span><br><span class="line">sudo iscsiadm -m node -o delete -T iqn.2015-02.oracle.boot:uefi -p 169.254.2.2:3260</span><br></pre></td></tr></table></figure>
+<p>然后我们进行分离附加操作，同上。接着登录到控制台，然后连接vnc，接着让服务器启动，我的是甲骨文，直接点控制台，其他国内外大厂基本一致，要么是VNC，要么是控制台。我们直接选择启动<br><img src="/images/1710440176371.jpg"><br>然后我们按ESC，进入bios，依次boot manager，EFI Internal Shell,输入FS0，搞错了..重新来<br>![](&#x2F;images&#x2F;1710444637928.jpg）<br>依次Boot Maintenance Manager，Boot Options，Add Boot Option，回车，选择我们的文件回车，Commit Changes and Exit，再重复一遍操作就会进入netboot的efi（我是按了两遍，按人品来说是一次就行了）<br>做到现在我发现了很大的问题，我发现我怎么按都进不了救援模式，之前我是有操作过的，进救援模式，直接改根目录，修改密码，有密钥直接改ssh配置文件就行了。很奇怪，所以我不得不重装系统了，后续再看看是什么原因，现在只能重装系统了，还好没有重要文件<br>我们选择Linux Network Installs (arm64)<br><img src="/images/1710530136141.jpg"><br>再选择自己喜欢的系统重装，这里我选择大便12<br><img src="/images/1710530212204.jpg"><br>接着选择基本的命令行安装Text Based Install，然后就是巴拉巴拉的让你选了，最后成功<br><img src="/images/1710530832269.jpg"><br>成功登录<br><img src="/images/1710530916121.jpg"><br>接下来我准备扩容硬盘（只能扩不能缩）<br><img src="/images/1710531590781.jpg"><br>然后命令行进行扩容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装工具</span></span><br><span class="line">apt install cloud-utils parted</span><br><span class="line"><span class="comment">#找到你的主分区，我的是sda2</span></span><br><span class="line">fdisk -l</span><br><span class="line"><span class="comment">#扩容</span></span><br><span class="line">parted /dev/sda resizepart 2 100%</span><br><span class="line">resize2fs /dev/sda2</span><br></pre></td></tr></table></figure>
+<p>ok。大功告成<br><img src="/images/1710534089146.jpg"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>是可以进救援模式进行无损改密的，或者拷贝数据再DD系统，应该是esc，shift，F2,F8,F10之类的。改天我去虚拟机试试，太久没有操作了</p>
+]]></content>
+      <categories>
+        <category>实用教程</category>
+      </categories>
+      <tags>
+        <tag>VNC</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
