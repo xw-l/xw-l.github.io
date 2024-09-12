@@ -1604,7 +1604,7 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
   </entry>
   <entry>
     <title>利用大厂免费Page搭建docker代理镜像</title>
-    <url>/2023/11/08/CF%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/</url>
+    <url>/2024/09/12/CF%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在今年6.7月份左右，国内知名docker镜像全部歇菜，具体原因不得而知，我只知道阿里的还生效，而且还是旧的镜像。然而到了9月10左右，好像又全部解封了。。不管封没封，我们可以自己搭建一个加速站点供自己使用</p>
 <h1 id="部署准备"><a href="#部署准备" class="headerlink" title="部署准备"></a>部署准备</h1><ul>
 <li>自行注册一个CF账号</li>
