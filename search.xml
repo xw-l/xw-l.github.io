@@ -1660,4 +1660,20 @@ command：要执行的命令，可以是系统命令，如果命令无法执行�
         <tag>nginx</tag>
       </tags>
   </entry>
+  <entry>
+    <title>谷歌浏览器在ubuntu24.04中打不开以及中文输入发无法生效的解决办法</title>
+    <url>/2025/02/11/google%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E4%B8%8D%E5%BC%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>相比于火狐我还是习惯了谷歌，最近我在ubuntu24.04桌面上Google浏览器无法打开，在命令行执行提示显卡错误，立刻想到是由于我更换了显卡导致，之前我是英伟达的1060，后来换成了amd的580，我们只要在命令行输入以下命令即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">google-chrome --disable-gpu</span><br></pre></td></tr></table></figure>
+<p>然后打开浏览器的设置把gpu加速关掉，真的很莫名其妙，amd号称linux驱动完美吗，英伟达还是闭源的<br>随后问题就来了，浏览器突然不支持输入拼音了，很尴尬，搞了很久才知道需要指定gtk的版本，我用的是fctix输入法，需要修改Google浏览器的启动配置项，如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /usr/share/applications/google-chrome.desktop</span><br><span class="line"><span class="comment">#定位到  Exec=/usr/bin/google-chrome-stable %U 修改为</span></span><br><span class="line">Exec=/usr/bin/google-chrome-stable %U --gtk-version=4</span><br></pre></td></tr></table></figure>
+<p>修改完后即可正常使用输入法，我换完显卡后Wayland 变成了X11，然后就是随之而来的各种问题，普通人要想使用还是相当麻烦的</p>
+]]></content>
+      <categories>
+        <category>闲来无事</category>
+      </categories>
+      <tags>
+        <tag>chrome,ubuntu</tag>
+      </tags>
+  </entry>
 </search>
